@@ -108,6 +108,7 @@
       display: flex;
       align-items: center;
       gap: 4px;
+      flex-wrap: wrap;
     }
 
     .nav-btn {
@@ -232,71 +233,17 @@
     .btn-sm { padding: 6px 14px; font-size: 12px; }
     .btn-xs { padding: 4px 10px; font-size: 11px; }
 
-    /* ═══ MAIN LAYOUT ═══ */
-    .main-container {
-      display: flex;
-      gap: 0;
-    }
-
-    .sidebar {
-      width: 260px;
-      background: var(--s1);
-      border-right: 1px solid var(--border);
-      padding: 20px 0;
-      max-height: calc(100vh - 60px);
-      overflow-y: auto;
-      display: none;
-    }
-
-    .sidebar.show { display: block; }
-
-    .sidebar-section {
-      padding: 0 14px;
-      margin-bottom: 16px;
-    }
-
-    .sidebar-label {
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      color: var(--muted);
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-      padding-left: 4px;
-    }
-
-    .sidebar-item {
-      padding: 9px 12px;
-      border-radius: 6px;
-      margin-bottom: 4px;
-      cursor: pointer;
-      transition: all 0.2s;
-      background: transparent;
-      color: var(--muted);
-      font-size: 13px;
-      border: 1px solid transparent;
-    }
-
-    .sidebar-item:hover {
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text);
-    }
-
-    .sidebar-item.active {
-      background: var(--green-d);
-      border-color: var(--green-b);
-      color: var(--green);
-      font-weight: 500;
-    }
-
+    /* ═══ CONTENT AREA ═══ */
     .content {
-      flex: 1;
-      overflow-y: auto;
-      max-height: calc(100vh - 60px);
+      width: 100%;
+      min-height: calc(100vh - 60px);
+      background: var(--bg);
     }
 
     .view {
       display: none;
+      width: 100%;
+      min-height: calc(100vh - 60px);
       animation: fadeIn 0.3s ease;
     }
 
@@ -491,31 +438,48 @@
 
     /* ═══ ENGINE VIEW ═══ */
     .engine-wrap {
-      padding: 30px;
-      max-width: 900px;
+      padding: 40px 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .view-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 14px;
-      margin-bottom: 28px;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
     }
 
     .stat-card {
       background: var(--s2);
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 18px;
+      padding: 20px;
       text-align: center;
+      transition: all 0.2s;
+    }
+
+    .stat-card:hover {
+      border-color: var(--border2);
+      box-shadow: 0 4px 12px rgba(52, 211, 153, 0.1);
     }
 
     .stat-value {
       font-family: 'Syne', sans-serif;
-      font-size: 32px;
+      font-size: 36px;
       font-weight: 800;
       color: var(--green);
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
     .stat-label {
@@ -528,15 +492,15 @@
       background: var(--s2);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 24px;
+      padding: 28px;
+      margin-bottom: 32px;
     }
 
     .action-panel h2 {
       font-family: 'Syne', sans-serif;
       font-size: 18px;
       font-weight: 700;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
     .action-buttons {
@@ -545,22 +509,33 @@
       flex-wrap: wrap;
     }
 
+    .log-section {
+      margin-bottom: 20px;
+    }
+
+    .log-section h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
     .log-container {
       background: var(--s1);
       border: 1px solid var(--border);
       border-radius: 10px;
       max-height: 400px;
       overflow-y: auto;
-      padding: 14px;
+      padding: 16px;
     }
 
     .log-entry {
       font-size: 12px;
-      padding: 6px 0;
+      padding: 8px 0;
       border-bottom: 1px solid var(--border);
       color: var(--muted2);
       display: flex;
-      gap: 8px;
+      gap: 10px;
     }
 
     .log-entry:last-child { border-bottom: none; }
@@ -572,8 +547,58 @@
 
     .log-time {
       color: var(--muted);
-      min-width: 50px;
+      min-width: 55px;
       font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    /* ═══ CONTENT VIEW GENERIC ═══ */
+    .content-header {
+      background: var(--s2);
+      border-bottom: 1px solid var(--border);
+      padding: 32px 30px;
+      margin-bottom: 0;
+    }
+
+    .content-body {
+      padding: 40px 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: var(--s2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      transition: all 0.2s;
+    }
+
+    .feature-card:hover {
+      border-color: var(--green-b);
+      box-shadow: 0 8px 24px rgba(52, 211, 153, 0.1);
+    }
+
+    .feature-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .feature-card p {
+      color: var(--muted2);
+      font-size: 13px;
+      line-height: 1.6;
     }
 
     /* ═══ TOAST NOTIFICATIONS ═══ */
@@ -589,6 +614,7 @@
       animation: slideIn 0.3s ease;
       max-width: 300px;
       font-size: 13px;
+      display: none;
     }
 
     @keyframes slideIn {
@@ -606,6 +632,10 @@
       .topbar { padding: 12px 16px; }
       .tone-grid { grid-template-columns: repeat(2, 1fr); }
       .engine-wrap { padding: 20px; }
+      .view-title { font-size: 28px; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .action-buttons { flex-direction: column; }
+      .action-buttons .btn { width: 100%; }
     }
   </style>
 </head>
@@ -635,155 +665,257 @@
     </div>
 
     <!-- ═══ MAIN CONTENT ═══ -->
-    <div class="main-container">
-      <div class="content">
-        <!-- SETUP VIEW -->
-        <div id="view-setup" class="view active">
-          <div class="setup-wrap">
-            <div class="setup-hero">
-              <h1>GMB Agency<br><em>Full-Stack Automation</em></h1>
-              <p>Reviews · Photos · Posts · Optimizer — all 70+ profiles, fully automated.</p>
-            </div>
+    <div class="content">
+      <!-- SETUP VIEW -->
+      <div id="view-setup" class="view active">
+        <div class="setup-wrap">
+          <div class="setup-hero">
+            <h1>GMB Agency<br><em>Full-Stack Automation</em></h1>
+            <p>Reviews · Photos · Posts · Optimizer — all 70+ profiles, fully automated.</p>
+          </div>
 
-            <div class="setup-card">
-              <h3><span class="n-badge">1</span> Google OAuth Client ID</h3>
-              <p>Your agency Google account that has Manager access to all GMB profiles.</p>
-              <div class="info-box">
-                <a href="https://console.cloud.google.com/apis/credentials" target="_blank">console.cloud.google.com</a> → Enable:
-                <strong>My Business API + Account Management API + Business Information API</strong>
+          <div class="setup-card">
+            <h3><span class="n-badge">1</span> Google OAuth Client ID</h3>
+            <p>Your agency Google account that has Manager access to all GMB profiles.</p>
+            <div class="info-box">
+              <a href="https://console.cloud.google.com/apis/credentials" target="_blank">console.cloud.google.com</a> → Enable:
+              <strong>My Business API + Account Management API + Business Information API</strong>
+            </div>
+            <div class="field">
+              <label>OAuth Client ID</label>
+              <input type="text" id="cfg-client" placeholder="xxxxxxxxx.apps.googleusercontent.com">
+            </div>
+          </div>
+
+          <div class="setup-card">
+            <h3><span class="n-badge">2</span> Claude API Key</h3>
+            <p>For profile analysis, SEO keywords, reply generation, and content creation.</p>
+            <div class="field">
+              <label>Anthropic API Key</label>
+              <input type="password" id="cfg-claude" placeholder="sk-ant-...">
+            </div>
+          </div>
+
+          <div class="setup-card">
+            <h3><span class="n-badge">3</span> Engine Settings</h3>
+            <div class="field">
+              <label>Default Reply Tone</label>
+              <div class="tone-grid" id="tone-grid">
+                <button class="tone-chip sel" onclick="selTone(this, 'professional')">Professional</button>
+                <button class="tone-chip" onclick="selTone(this, 'warm')">Warm & Friendly</button>
+                <button class="tone-chip" onclick="selTone(this, 'luxury')">Luxury</button>
+                <button class="tone-chip" onclick="selTone(this, 'casual')">Casual</button>
+                <button class="tone-chip" onclick="selTone(this, 'empathetic')">Empathetic</button>
+              </div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
+              <div class="field">
+                <label>Daily Report Time</label>
+                <input type="time" id="cfg-rtime" value="20:00">
               </div>
               <div class="field">
-                <label>OAuth Client ID</label>
-                <input type="text" id="cfg-client" placeholder="xxxxxxxxx.apps.googleusercontent.com">
+                <label>Reply Delay (sec)</label>
+                <input type="number" id="cfg-delay" value="4" min="2" max="30">
               </div>
-            </div>
-
-            <div class="setup-card">
-              <h3><span class="n-badge">2</span> Claude API Key</h3>
-              <p>For profile analysis, SEO keywords, reply generation, and content creation.</p>
               <div class="field">
-                <label>Anthropic API Key</label>
-                <input type="password" id="cfg-claude" placeholder="sk-ant-...">
+                <label>API Throttle (ms)</label>
+                <input type="number" id="cfg-throttle" value="1200" min="800" max="5000" step="200">
               </div>
             </div>
-
-            <div class="setup-card">
-              <h3><span class="n-badge">3</span> Engine Settings</h3>
-              <div class="field">
-                <label>Default Reply Tone</label>
-                <div class="tone-grid" id="tone-grid">
-                  <button class="tone-chip sel" onclick="selTone(this, 'professional')">Professional</button>
-                  <button class="tone-chip" onclick="selTone(this, 'warm')">Warm & Friendly</button>
-                  <button class="tone-chip" onclick="selTone(this, 'luxury')">Luxury</button>
-                  <button class="tone-chip" onclick="selTone(this, 'casual')">Casual</button>
-                  <button class="tone-chip" onclick="selTone(this, 'empathetic')">Empathetic</button>
-                </div>
-              </div>
-              <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
-                <div class="field">
-                  <label>Daily Report Time</label>
-                  <input type="time" id="cfg-rtime" value="20:00">
-                </div>
-                <div class="field">
-                  <label>Reply Delay (sec)</label>
-                  <input type="number" id="cfg-delay" value="4" min="2" max="30">
-                </div>
-                <div class="field">
-                  <label>API Throttle (ms)</label>
-                  <input type="number" id="cfg-throttle" value="1200" min="800" max="5000" step="200">
-                </div>
-              </div>
-              <div class="info-box" style="margin-top: 8px;">
-                ⚡ <strong>Getting 429 errors?</strong> Increase API Throttle to 2000–3000 ms.
-              </div>
-            </div>
-
-            <button class="btn btn-green" onclick="doConnect()" style="width: 100%; justify-content: center; font-size: 15px; padding: 14px; margin-bottom: 12px;">
-              ✓ Connect Google Account & Start →
-            </button>
-            <div class="warn-box">⚠️ All credentials stored locally in your browser only.</div>
-          </div>
-        </div>
-
-        <!-- ENGINE VIEW -->
-        <div id="view-engine" class="view" style="display: none;">
-          <div class="engine-wrap">
-            <h1 style="font-family: 'Syne', sans-serif; font-size: 32px; margin-bottom: 24px;">⚡ Review Engine</h1>
-            
-            <div class="stats-grid">
-              <div class="stat-card">
-                <div class="stat-value" id="stat-replied">0</div>
-                <div class="stat-label">Replies Posted</div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-value" id="stat-locations">0</div>
-                <div class="stat-label">Locations Processed</div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-value" id="stat-pending">0</div>
-                <div class="stat-label">Pending Reviews</div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-value" id="stat-queue">0</div>
-                <div class="stat-label">Total Profiles</div>
-              </div>
-            </div>
-
-            <div class="action-panel">
-              <h2>Control Panel</h2>
-              <div class="action-buttons">
-                <button class="btn btn-green" id="run-btn" onclick="startEngine()" style="gap: 8px;">
-                  ▶ Run Reviews
-                </button>
-                <button class="btn btn-ghost" id="stop-btn" onclick="stopEngine()" style="display: none;">
-                  ⏹ Stop
-                </button>
-              </div>
-            </div>
-
-            <div>
-              <h3 style="font-family: 'Syne', sans-serif; font-size: 14px; margin-bottom: 12px;">Activity Log</h3>
-              <div class="log-container" id="log-container"></div>
+            <div class="info-box" style="margin-top: 8px;">
+              ⚡ <strong>Getting 429 errors?</strong> Increase API Throttle to 2000–3000 ms.
             </div>
           </div>
-        </div>
 
-        <!-- STUDIO VIEW -->
-        <div id="view-studio" class="view" style="display: none;">
-          <div class="engine-wrap">
-            <h1 style="font-family: 'Syne', sans-serif; font-size: 32px; margin-bottom: 24px;">📸 Content Studio</h1>
-            <div class="setup-card">
-              <p style="color: var(--muted);">Upload photos and create posts for all your GMB locations. Coming soon...</p>
+          <button class="btn btn-green" onclick="doConnect()" style="width: 100%; justify-content: center; font-size: 15px; padding: 14px; margin-bottom: 12px;">
+            ✓ Connect Google Account & Start →
+          </button>
+          <div class="warn-box">⚠️ All credentials stored locally in your browser only.</div>
+        </div>
+      </div>
+
+      <!-- ENGINE VIEW -->
+      <div id="view-engine" class="view">
+        <div class="engine-wrap">
+          <h1 class="view-title">⚡ Review Engine</h1>
+          
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-value" id="stat-replied">0</div>
+              <div class="stat-label">Replies Posted</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="stat-locations">0</div>
+              <div class="stat-label">Locations Processed</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="stat-pending">0</div>
+              <div class="stat-label">Pending Reviews</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="stat-queue">0</div>
+              <div class="stat-label">Total Profiles</div>
             </div>
           </div>
-        </div>
 
-        <!-- OPTIMIZER VIEW -->
-        <div id="view-optimizer" class="view" style="display: none;">
-          <div class="engine-wrap">
-            <h1 style="font-family: 'Syne', sans-serif; font-size: 32px; margin-bottom: 24px;">🚀 Profile Optimizer</h1>
-            <div class="setup-card">
-              <p style="color: var(--muted);">Optimize business descriptions, Q&A, services, and health scores. Coming soon...</p>
+          <div class="action-panel">
+            <h2>Control Panel</h2>
+            <div class="action-buttons">
+              <button class="btn btn-green" id="run-btn" onclick="startEngine()">
+                ▶ Run Reviews
+              </button>
+              <button class="btn btn-ghost" id="stop-btn" onclick="stopEngine()" style="display: none;">
+                ⏹ Stop
+              </button>
+            </div>
+          </div>
+
+          <div class="log-section">
+            <h3>Activity Log</h3>
+            <div class="log-container" id="log-container"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STUDIO VIEW -->
+      <div id="view-studio" class="view">
+        <div class="content-header">
+          <h1 class="view-title">📸 Content Studio</h1>
+          <p style="color: var(--muted2); margin-top: 8px;">Upload photos and create posts for all your GMB locations.</p>
+        </div>
+        <div class="content-body">
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h3>🖼️ Drag & Drop Upload</h3>
+              <p>Upload photos and videos directly. We handle compression and optimization automatically.</p>
+            </div>
+            <div class="feature-card">
+              <h3>✍️ AI Captions</h3>
+              <p>Automatic caption generation using your business keywords and tone for each location.</p>
+            </div>
+            <div class="feature-card">
+              <h3>📢 4 Post Types</h3>
+              <p>Update, Offer, Event, and Photo posts. Schedule or post immediately to all profiles.</p>
+            </div>
+            <div class="feature-card">
+              <h3>⚡ Bulk Posting</h3>
+              <p>Post to 70+ profiles with one click. Fully automated with proper rate limiting.</p>
+            </div>
+            <div class="feature-card">
+              <h3>📅 Scheduling</h3>
+              <p>Schedule posts for specific dates and times. Perfect for marketing campaigns.</p>
+            </div>
+            <div class="feature-card">
+              <h3>📊 Analytics</h3>
+              <p>Track engagement across all posts and locations. See what works best for your clients.</p>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- INTELLIGENCE VIEW -->
-        <div id="view-intelligence" class="view" style="display: none;">
-          <div class="engine-wrap">
-            <h1 style="font-family: 'Syne', sans-serif; font-size: 32px; margin-bottom: 24px;">🧠 Intelligence</h1>
-            <div class="setup-card">
-              <p style="color: var(--muted);">View learned profiles, keywords, and insights. Coming soon...</p>
+      <!-- OPTIMIZER VIEW -->
+      <div id="view-optimizer" class="view">
+        <div class="content-header">
+          <h1 class="view-title">🚀 Profile Optimizer</h1>
+          <p style="color: var(--muted2); margin-top: 8px;">Maximize SEO and rankings for all your profiles.</p>
+        </div>
+        <div class="content-body">
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h3>📝 Business Description</h3>
+              <p>AI-generated 750-character descriptions optimized for local SEO and ranking keywords.</p>
+            </div>
+            <div class="feature-card">
+              <h3>📮 Google Posts</h3>
+              <p>3 high-quality posts per location (Update + Offer + Tips) with custom content.</p>
+            </div>
+            <div class="feature-card">
+              <h3>❓ Q&A Seeding</h3>
+              <p>5 keyword-rich Q&A pairs per profile to capture long-tail search traffic.</p>
+            </div>
+            <div class="feature-card">
+              <h3>🛠️ Services List</h3>
+              <p>Optimize and categorize services using industry keywords for better discoverability.</p>
+            </div>
+            <div class="feature-card">
+              <h3>💚 Health Score</h3>
+              <p>Profile completeness score (0-100%) with recommendations to improve ranking.</p>
+            </div>
+            <div class="feature-card">
+              <h3>🔍 SEO Analysis</h3>
+              <p>Deep analysis of your profile strength vs competitors in your area.</p>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- REPORT VIEW -->
-        <div id="view-report" class="view" style="display: none;">
-          <div class="engine-wrap">
-            <h1 style="font-family: 'Syne', sans-serif; font-size: 32px; margin-bottom: 24px;">📊 Daily Report</h1>
-            <div class="setup-card">
-              <p style="color: var(--muted);">View today's performance and auto-generated insights. Coming soon...</p>
+      <!-- INTELLIGENCE VIEW -->
+      <div id="view-intelligence" class="view">
+        <div class="content-header">
+          <h1 class="view-title">🧠 Intelligence</h1>
+          <p style="color: var(--muted2); margin-top: 8px;">Self-learning profile insights and keyword mapping.</p>
+        </div>
+        <div class="content-body">
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h3>🧠 Profile Learning</h3>
+              <p>The engine learns and caches profile data. Gets smarter with every run — never re-analyzes.</p>
+            </div>
+            <div class="feature-card">
+              <h3>🔑 Keyword Map</h3>
+              <p>7 primary keywords, 4 local/geo keywords, and 5 service keywords per location.</p>
+            </div>
+            <div class="feature-card">
+              <h3>💼 Business Personality</h3>
+              <p>AI profiles your business tone, USP, and unique selling propositions from reviews.</p>
+            </div>
+            <div class="feature-card">
+              <h3>⚠️ Concern Tracking</h3>
+              <p>Identifies common customer concerns from negative reviews for targeted responses.</p>
+            </div>
+            <div class="feature-card">
+              <h3>📈 Performance Trends</h3>
+              <p>Track how your profiles evolve over time. See impact of optimizations.</p>
+            </div>
+            <div class="feature-card">
+              <h3>🎯 Recommendations</h3>
+              <p>AI-powered suggestions for improving each profile based on competitive analysis.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REPORT VIEW -->
+      <div id="view-report" class="view">
+        <div class="content-header">
+          <h1 class="view-title">📊 Daily Report</h1>
+          <p style="color: var(--muted2); margin-top: 8px;">Auto-generated performance insights and agency analytics.</p>
+        </div>
+        <div class="content-body">
+          <div class="feature-grid">
+            <div class="feature-card">
+              <h3>📅 Auto-Generation</h3>
+              <p>Reports auto-generate daily at your configured time (default 8 PM). No manual work.</p>
+            </div>
+            <div class="feature-card">
+              <h3>📍 Per-Location Data</h3>
+              <p>Individual performance metrics for each of your 70+ profiles in one comprehensive report.</p>
+            </div>
+            <div class="feature-card">
+              <h3>💚 Health Scores</h3>
+              <p>Current health score for each profile with trend analysis and improvement suggestions.</p>
+            </div>
+            <div class="feature-card">
+              <h3>🤖 AI Insights</h3>
+              <p>ChatGPT-powered natural language insights. Understand what's working and what's not.</p>
+            </div>
+            <div class="feature-card">
+              <h3>📤 Client Ready</h3>
+              <p>Export beautiful, branded HTML reports to share directly with your clients.</p>
+            </div>
+            <div class="feature-card">
+              <h3>📧 Email Ready</h3>
+              <p>Fully responsive reports ready to email. White-label with your agency branding.</p>
             </div>
           </div>
         </div>
@@ -822,7 +954,6 @@
     window.onload = () => {
       loadCfgUI();
       if (cfg.client && cfg.claude) {
-        // Auto-connect if credentials exist
         doConnect();
       }
     };
@@ -1010,7 +1141,6 @@
         try {
           log(`Processing ${loc.title}...`, 'info');
           
-          // Simulate processing
           await sleep(2000);
           replied++;
           processed++;
