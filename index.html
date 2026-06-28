@@ -2,173 +2,18 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>GMB Autopilot v3 — Agency Intelligence [CORRECTED]</title>
+<title>GMB Autopilot v3 — ANTI-429 Edition</title>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
-:root{
-  --bg:#04060d;--s1:#0b0f1a;--s2:#111827;--s3:#1a2234;
-  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.13);
-  --text:#dde3f0;--muted:#4a5878;--muted2:#7a8ba8;
-  --green:#34d399;--green-d:rgba(52,211,153,0.1);--green-b:rgba(52,211,153,0.25);
-  --blue:#60a5fa;--blue-d:rgba(96,165,250,0.1);--blue-b:rgba(96,165,250,0.25);
-  --amber:#f59e0b;--amber-d:rgba(245,158,11,0.1);--amber-b:rgba(245,158,11,0.25);
-  --red:#f87171;--red-d:rgba(248,113,113,0.1);--red-b:rgba(248,113,113,0.25);
-  --purple:#a78bfa;--purple-d:rgba(167,139,250,0.1);--purple-b:rgba(167,139,250,0.25);
-  --cyan:#22d3ee;--cyan-d:rgba(34,211,238,0.1);
-  --orange:#fb923c;--orange-d:rgba(251,146,60,0.1);--orange-b:rgba(251,146,60,0.25);
-}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
-body::before{content:'';position:fixed;inset:0;z-index:0;opacity:0.025;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  pointer-events:none;}
-.page{position:relative;z-index:1;}
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:13px 26px;border-bottom:1px solid var(--border);background:rgba(4,6,13,0.88);backdrop-filter:blur(18px);position:sticky;top:0;z-index:200;}
-.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:16px;display:flex;align-items:center;gap:9px;}
-.logo-ring{width:26px;height:26px;border-radius:50%;background:conic-gradient(var(--green),var(--blue),var(--purple),var(--green));display:flex;align-items:center;justify-content:center;animation:spin 5s linear infinite;}
-.logo-ring::after{content:'';width:18px;height:18px;border-radius:50%;background:var(--bg);}
-@keyframes spin{to{transform:rotate(360deg);}}
-.topbar-nav{display:flex;align-items:center;gap:3px;}
-.nav-btn{padding:6px 14px;border-radius:9px;border:none;font-family:'Outfit',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all 0.16s;background:transparent;color:var(--muted);}
-.nav-btn:hover{color:var(--text);background:var(--s2);}
-.nav-btn.active{background:var(--s2);color:var(--text);border:1px solid var(--border2);}
-.topbar-right{display:flex;align-items:center;gap:8px;}
-.pill{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:100px;font-size:11px;font-weight:500;border:1px solid var(--border);background:var(--s2);color:var(--muted);}
-.pill.on{border-color:var(--green-b);background:var(--green-d);color:var(--green);}
-.pill-dot{width:5px;height:5px;border-radius:50%;background:currentColor;}
-.btn{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:10px;border:none;font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.17s;white-space:nowrap;}
-.btn:disabled{opacity:0.35;cursor:not-allowed;}
-.btn-green{background:var(--green);color:#04060d;box-shadow:0 3px 14px rgba(52,211,153,0.28);}
-.btn-green:not(:disabled):hover{transform:translateY(-1px);box-shadow:0 5px 20px rgba(52,211,153,0.38);}
-.btn-ghost{background:var(--s2);color:var(--muted2);border:1px solid var(--border);}
-.btn-ghost:not(:disabled):hover{color:var(--text);border-color:var(--border2);}
-.btn-sm{padding:6px 12px;font-size:12px;border-radius:8px;}
-.btn-xs{padding:3px 9px;font-size:11px;border-radius:6px;}
-input,textarea,select{background:var(--s2);border:1px solid var(--border);border-radius:9px;padding:10px 13px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s;width:100%;}
-input:focus,textarea:focus,select:focus{border-color:var(--green);}
-select option{background:var(--s1);}
-textarea{resize:vertical;}
-.field{display:flex;flex-direction:column;gap:5px;margin-bottom:13px;}
-.field label{font-size:11px;font-weight:600;color:var(--muted);letter-spacing:0.07em;text-transform:uppercase;}
-.view{display:none;}.view.active{display:block;}
-.page-pad{padding:26px 30px;}
-.card{background:var(--s1);border:1px solid var(--border);border-radius:16px;padding:20px;}
-.card-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px;margin-bottom:14px;}
-.stats-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:11px;margin-bottom:22px;}
-.stat-box{background:var(--s1);border:1px solid var(--border);border-radius:13px;padding:15px 17px;}
-.stat-val{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;line-height:1;margin-bottom:3px;}
-.stat-lbl{font-size:11px;color:var(--muted);}
-.stat-box.g{border-color:var(--green-b);}.stat-box.g .stat-val{color:var(--green);}
-.stat-box.b{border-color:var(--blue-b);}.stat-box.b .stat-val{color:var(--blue);}
-.stat-box.a{border-color:var(--amber-b);}.stat-box.a .stat-val{color:var(--amber);}
-.stat-box.r{border-color:var(--red-b);}.stat-box.r .stat-val{color:var(--red);}
-.stat-box.p{border-color:var(--purple-b);}.stat-box.p .stat-val{color:var(--purple);}
-.prog-wrap{margin-bottom:18px;}
-.prog-top{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:6px;}
-.prog-bar{height:4px;background:var(--s2);border-radius:3px;overflow:hidden;}
-.prog-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--cyan));border-radius:3px;transition:width 0.4s ease;}
-.sub-prog-bar{height:2px;background:var(--s3);border-radius:2px;overflow:hidden;margin-top:4px;}
-.sub-prog-fill{height:100%;background:var(--blue);border-radius:2px;transition:width 0.3s;}
-.chip{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:600;}
-.chip.g{background:var(--green-d);color:var(--green);}
-.chip.a{background:var(--amber-d);color:var(--amber);}
-.chip.r{background:var(--red-d);color:var(--red);}
-.chip.b{background:var(--blue-d);color:var(--blue);}
-.kw-tag{padding:4px 11px;border-radius:100px;font-size:12px;font-weight:500;border:1px solid var(--border);background:var(--s2);color:var(--muted2);}
-.kw-tag.primary{background:var(--green-d);border-color:var(--green-b);color:var(--green);}
-.keyword-cloud{display:flex;flex-wrap:wrap;gap:6px;}
-.dots{display:inline-flex;gap:3px;align-items:center;}
-.dot{width:5px;height:5px;border-radius:50%;background:currentColor;animation:db 1.2s infinite;}
-.dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}
-@keyframes db{0%,80%,100%{opacity:.2}40%{opacity:1}}
-.intel-log{background:var(--s1);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
-.intel-log-header{padding:12px 17px;border-bottom:1px solid var(--border);font-family:'Syne',sans-serif;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;}
-.intel-log-body{overflow-y:auto;max-height:200px;padding:8px;}
-.log-entry{font-size:12px;line-height:1.6;padding:3px 7px;border-radius:5px;display:flex;gap:7px;align-items:baseline;}
-.log-entry.info{color:var(--muted2);}.log-entry.success{color:var(--green);}
-.log-entry.warn{color:var(--amber);}.log-entry.ai{color:var(--purple);}
-.log-entry.location{color:var(--blue);font-weight:600;}.log-entry.photo{color:var(--orange);}
-.log-time{font-size:10px;color:var(--muted);flex-shrink:0;font-variant-numeric:tabular-nums;}
-.engine-grid{display:grid;grid-template-columns:280px 1fr;gap:20px;min-height:calc(100vh-130px);}
-.queue-panel{background:var(--s1);border:1px solid var(--border);border-radius:16px;display:flex;flex-direction:column;overflow:hidden;}
-.queue-header{padding:16px 18px;border-bottom:1px solid var(--border);}
-.queue-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:space-between;}
-.queue-sub{font-size:11px;color:var(--muted);margin-top:3px;}
-.queue-list{flex:1;overflow-y:auto;padding:8px;max-height:calc(100vh - 350px);}
-.queue-item{display:flex;align-items:center;gap:9px;padding:9px 9px;border-radius:9px;border:1px solid transparent;margin-bottom:3px;cursor:pointer;transition:all 0.14s;}
-.queue-item:hover{background:var(--s2);}
-.queue-item.processing{background:var(--blue-d);border-color:var(--blue-b);}
-.queue-item.done{background:var(--green-d);border-color:var(--green-b);}
-.q-icon{width:32px;height:32px;border-radius:8px;background:var(--s3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
-.q-name{font-size:12px;font-weight:500;line-height:1.3;}
-.q-meta{font-size:11px;color:var(--muted);margin-top:1px;}
-.q-status{margin-left:auto;flex-shrink:0;font-size:16px;}
-.q-count-badge{padding:2px 6px;border-radius:5px;font-size:10px;font-weight:700;background:var(--amber-d);color:var(--amber);border:1px solid var(--amber-b);}
-.q-count-badge.done{background:var(--green-d);color:var(--green);border-color:var(--green-b);}
-.queue-controls{padding:12px 14px;border-top:1px solid var(--border);display:flex;gap:6px;flex-wrap:wrap;}
-.live-panel{display:flex;flex-direction:column;gap:14px;}
-.live-header{background:var(--s1);border:1px solid var(--border);border-radius:16px;padding:18px 22px;}
-.live-loc-name{font-family:'Syne',sans-serif;font-size:19px;font-weight:800;display:flex;align-items:center;gap:9px;}
-.live-loc-meta{font-size:13px;color:var(--muted2);margin-top:5px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
-.profile-analysis{background:var(--s1);border:1px solid var(--border);border-radius:16px;padding:18px 22px;}
-.profile-analysis h4{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:7px;}
-.review-feed{background:var(--s1);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
-.feed-header{padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
-.feed-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;}
-.review-item{padding:16px 20px;border-bottom:1px solid var(--border);}
-.review-item:last-child{border-bottom:none;}
-.ri-head{display:flex;align-items:flex-start;gap:11px;margin-bottom:9px;}
-.ri-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#1a3050,#2a4a70);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:var(--blue);flex-shrink:0;}
-.ri-name{font-weight:600;font-size:14px;}
-.ri-meta{display:flex;align-items:center;gap:7px;margin-top:2px;flex-wrap:wrap;}
-.stars{color:var(--amber);font-size:12px;letter-spacing:-1px;}
-.stars .e{color:var(--s3);}
-.ri-date{font-size:11px;color:var(--muted);}
-.ri-text{font-size:13px;color:#9aacc0;line-height:1.6;margin-bottom:10px;}
-.reply-box{background:var(--green-d);border:1px solid var(--green-b);border-radius:9px;padding:12px;}
-.reply-box-label{font-size:10px;font-weight:700;color:var(--green);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:7px;}
-.reply-box-text{font-size:13px;color:#a7f3d0;line-height:1.6;}
-.posted-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--green);background:var(--green-d);border:1px solid var(--green-b);padding:3px 9px;border-radius:100px;margin-top:8px;}
-.empty{text-align:center;padding:36px 20px;color:var(--muted);}
-.empty .ei{font-size:34px;margin-bottom:11px;}
-.empty h4{font-family:'Syne',sans-serif;font-size:16px;color:var(--text);margin-bottom:5px;}
-.empty p{font-size:13px;line-height:1.5;}
-.rotate{animation:spin 1s linear infinite;}
-.fade-in{animation:fadein 0.35s ease;}
-@keyframes fadein{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
-.scroll-area::-webkit-scrollbar{width:3px;}
-.scroll-area::-webkit-scrollbar-track{background:transparent;}
-.scroll-area::-webkit-scrollbar-thumb{background:var(--s3);border-radius:2px;}
-.setup-wrap{max-width:570px;margin:60px auto;padding:0 20px 60px;}
-.setup-hero{text-align:center;margin-bottom:42px;}
-.setup-hero h1{font-family:'Syne',sans-serif;font-size:clamp(24px,4vw,38px);font-weight:800;line-height:1.1;margin-bottom:11px;}
-.setup-hero h1 em{color:var(--green);font-style:normal;}
-.setup-hero p{color:var(--muted2);font-size:15px;line-height:1.6;}
-.setup-card{background:var(--s1);border:1px solid var(--border);border-radius:17px;padding:26px;margin-bottom:13px;}
-.setup-card h3{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;display:flex;align-items:center;gap:9px;margin-bottom:6px;}
-.n-badge{width:22px;height:22px;border-radius:50%;background:var(--green);color:var(--bg);font-size:11px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;}
-.setup-card p{color:var(--muted2);font-size:13px;margin-bottom:16px;line-height:1.55;}
-.info-box{background:var(--blue-d);border:1px solid var(--blue-b);border-radius:9px;padding:11px 13px;font-size:13px;color:#93c5fd;line-height:1.5;margin-bottom:13px;}
-.info-box a{color:var(--blue);}
-.info-box code{color:var(--green);font-size:12px;}
-.warn-box{background:var(--amber-d);border:1px solid var(--amber-b);border-radius:9px;padding:10px 13px;font-size:12px;color:#fcd34d;line-height:1.5;margin-top:11px;}
-.tone-grid{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;}
-.tone-chip{padding:5px 13px;border-radius:100px;border:1px solid var(--border);background:transparent;color:var(--muted2);font-family:'Outfit',sans-serif;font-size:12px;cursor:pointer;transition:all 0.14s;}
-.tone-chip.sel{background:var(--green-d);border-color:var(--green-b);color:var(--green);font-weight:600;}
-#toast{position:fixed;bottom:20px;right:20px;z-index:999;background:var(--s2);border:1px solid var(--border);border-radius:11px;padding:12px 18px;font-size:14px;font-weight:500;box-shadow:0 8px 32px rgba(0,0,0,0.5);max-width:310px;transform:translateY(70px);opacity:0;transition:all 0.28s cubic-bezier(.34,1.56,.64,1);}
-#toast.show{transform:translateY(0);opacity:1;}
-#toast.ok{border-color:var(--green-b);color:var(--green);}
-#toast.err{border-color:var(--red-b);color:var(--red);}
-#toast.info{border-color:var(--blue-b);color:var(--blue);}
-@media(max-width:900px){.engine-grid{grid-template-columns:1fr;}.stats-strip{grid-template-columns:repeat(3,1fr);}}
+:root{--bg:#04060d;--s1:#0b0f1a;--s2:#111827;--s3:#1a2234;--border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.13);--text:#dde3f0;--muted:#4a5878;--muted2:#7a8ba8;--green:#34d399;--green-d:rgba(52,211,153,0.1);--green-b:rgba(52,211,153,0.25);--blue:#60a5fa;--blue-d:rgba(96,165,250,0.1);--blue-b:rgba(96,165,250,0.25);--amber:#f59e0b;--amber-d:rgba(245,158,11,0.1);--amber-b:rgba(245,158,11,0.25);--red:#f87171;--red-d:rgba(248,113,113,0.1);--red-b:rgba(248,113,113,0.25);--purple:#a78bfa;--purple-d:rgba(167,139,250,0.1);--purple-b:rgba(167,139,250,0.25);}
+*{box-sizing:border-box;margin:0;padding:0;}body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}body::before{content:'';position:fixed;inset:0;z-index:0;opacity:0.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");pointer-events:none;}.page{position:relative;z-index:1;}.topbar{display:flex;align-items:center;justify-content:space-between;padding:13px 26px;border-bottom:1px solid var(--border);background:rgba(4,6,13,0.88);backdrop-filter:blur(18px);position:sticky;top:0;z-index:200;}.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:16px;display:flex;align-items:center;gap:9px;}.logo-ring{width:26px;height:26px;border-radius:50%;background:conic-gradient(var(--green),var(--blue),var(--purple),var(--green));display:flex;align-items:center;justify-content:center;animation:spin 5s linear infinite;}.logo-ring::after{content:'';width:18px;height:18px;border-radius:50%;background:var(--bg);}@keyframes spin{to{transform:rotate(360deg);}}.topbar-nav{display:flex;align-items:center;gap:3px;}.nav-btn{padding:6px 14px;border-radius:9px;border:none;font-family:'Outfit',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all 0.16s;background:transparent;color:var(--muted);}.nav-btn:hover{color:var(--text);background:var(--s2);}.nav-btn.active{background:var(--s2);color:var(--text);border:1px solid var(--border2);}.topbar-right{display:flex;align-items:center;gap:8px;}.pill{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:100px;font-size:11px;font-weight:500;border:1px solid var(--border);background:var(--s2);color:var(--muted);}.pill.on{border-color:var(--green-b);background:var(--green-d);color:var(--green);}.pill-dot{width:5px;height:5px;border-radius:50%;background:currentColor;}.btn{display:inline-flex;align-items:center;gap:7px;padding:9px 18px;border-radius:10px;border:none;font-family:'Outfit',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.17s;white-space:nowrap;}.btn:disabled{opacity:0.35;cursor:not-allowed;}.btn-green{background:var(--green);color:#04060d;box-shadow:0 3px 14px rgba(52,211,153,0.28);}.btn-green:not(:disabled):hover{transform:translateY(-1px);box-shadow:0 5px 20px rgba(52,211,153,0.38);}.btn-ghost{background:var(--s2);color:var(--muted2);border:1px solid var(--border);}.btn-ghost:not(:disabled):hover{color:var(--text);border-color:var(--border2);}.btn-sm{padding:6px 12px;font-size:12px;border-radius:8px;}.btn-xs{padding:3px 9px;font-size:11px;border-radius:6px;}input,textarea,select{background:var(--s2);border:1px solid var(--border);border-radius:9px;padding:10px 13px;color:var(--text);font-family:'Outfit',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s;width:100%;}input:focus,textarea:focus,select:focus{border-color:var(--green);}select option{background:var(--s1);}textarea{resize:vertical;}.field{display:flex;flex-direction:column;gap:5px;margin-bottom:13px;}.field label{font-size:11px;font-weight:600;color:var(--muted);letter-spacing:0.07em;text-transform:uppercase;}.view{display:none;}.view.active{display:block;}.page-pad{padding:26px 30px;}.card{background:var(--s1);border:1px solid var(--border);border-radius:16px;padding:20px;}.card-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px;margin-bottom:14px;}.stats-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:11px;margin-bottom:22px;}.stat-box{background:var(--s1);border:1px solid var(--border);border-radius:13px;padding:15px 17px;}.stat-val{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;line-height:1;margin-bottom:3px;}.stat-lbl{font-size:11px;color:var(--muted);}.stat-box.g{border-color:var(--green-b);}.stat-box.g .stat-val{color:var(--green);}.stat-box.b{border-color:var(--blue-b);}.stat-box.b .stat-val{color:var(--blue);}.stat-box.a{border-color:var(--amber-b);}.stat-box.a .stat-val{color:var(--amber);}.stat-box.r{border-color:var(--red-b);}.stat-box.r .stat-val{color:var(--red);}.stat-box.p{border-color:var(--purple-b);}.stat-box.p .stat-val{color:var(--purple);}.prog-wrap{margin-bottom:18px;}.prog-top{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:6px;}.prog-bar{height:4px;background:var(--s2);border-radius:3px;overflow:hidden;}.prog-fill{height:100%;background:linear-gradient(90deg,var(--green),#22d3ee);border-radius:3px;transition:width 0.4s ease;}.chip{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:600;}.chip.g{background:var(--green-d);color:var(--green);}.chip.a{background:var(--amber-d);color:var(--amber);}.chip.r{background:var(--red-d);color:var(--red);}.kw-tag{padding:4px 11px;border-radius:100px;font-size:12px;font-weight:500;border:1px solid var(--border);background:var(--s2);color:var(--muted2);}.kw-tag.primary{background:var(--green-d);border-color:var(--green-b);color:var(--green);}.keyword-cloud{display:flex;flex-wrap:wrap;gap:6px;}.dots{display:inline-flex;gap:3px;align-items:center;}.dot{width:5px;height:5px;border-radius:50%;background:currentColor;animation:db 1.2s infinite;}.dot:nth-child(2){animation-delay:.2s}.dot:nth-child(3){animation-delay:.4s}@keyframes db{0%,80%,100%{opacity:.2}40%{opacity:1}}.intel-log{background:var(--s1);border:1px solid var(--border);border-radius:16px;overflow:hidden;}.intel-log-header{padding:12px 17px;border-bottom:1px solid var(--border);font-family:'Syne',sans-serif;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;}.intel-log-body{overflow-y:auto;max-height:200px;padding:8px;}.log-entry{font-size:12px;line-height:1.6;padding:3px 7px;border-radius:5px;display:flex;gap:7px;align-items:baseline;}.log-entry.info{color:var(--muted2);}.log-entry.success{color:var(--green);}.log-entry.warn{color:var(--amber);}.log-entry.ai{color:var(--purple);}.log-time{font-size:10px;color:var(--muted);flex-shrink:0;font-variant-numeric:tabular-nums;}.engine-grid{display:grid;grid-template-columns:280px 1fr;gap:20px;min-height:calc(100vh-130px);}.queue-panel{background:var(--s1);border:1px solid var(--border);border-radius:16px;display:flex;flex-direction:column;overflow:hidden;}.queue-header{padding:16px 18px;border-bottom:1px solid var(--border);}.queue-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:space-between;}.queue-sub{font-size:11px;color:var(--muted);margin-top:3px;}.queue-list{flex:1;overflow-y:auto;padding:8px;max-height:calc(100vh - 350px);}.queue-item{display:flex;align-items:center;gap:9px;padding:9px 9px;border-radius:9px;border:1px solid transparent;margin-bottom:3px;cursor:pointer;transition:all 0.14s;}.queue-item:hover{background:var(--s2);}.queue-item.processing{background:var(--blue-d);border-color:var(--blue-b);}.queue-item.done{background:var(--green-d);border-color:var(--green-b);}.q-icon{width:32px;height:32px;border-radius:8px;background:var(--s3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}.q-name{font-size:12px;font-weight:500;line-height:1.3;}.q-meta{font-size:11px;color:var(--muted);margin-top:1px;}.q-count-badge{padding:2px 6px;border-radius:5px;font-size:10px;font-weight:700;background:var(--amber-d);color:var(--amber);border:1px solid var(--amber-b);}.q-count-badge.done{background:var(--green-d);color:var(--green);border-color:var(--green-b);}.queue-controls{padding:12px 14px;border-top:1px solid var(--border);display:flex;gap:6px;flex-wrap:wrap;}.live-panel{display:flex;flex-direction:column;gap:14px;}.live-header{background:var(--s1);border:1px solid var(--border);border-radius:16px;padding:18px 22px;}.live-loc-name{font-family:'Syne',sans-serif;font-size:19px;font-weight:800;display:flex;align-items:center;gap:9px;}.live-loc-meta{font-size:13px;color:var(--muted2);margin-top:5px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}.review-feed{background:var(--s1);border:1px solid var(--border);border-radius:16px;overflow:hidden;}.feed-header{padding:14px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}.feed-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;}.review-item{padding:16px 20px;border-bottom:1px solid var(--border);}.review-item:last-child{border-bottom:none;}.ri-head{display:flex;align-items:flex-start;gap:11px;margin-bottom:9px;}.ri-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#1a3050,#2a4a70);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:var(--blue);flex-shrink:0;}.ri-name{font-weight:600;font-size:14px;}.ri-meta{display:flex;align-items:center;gap:7px;margin-top:2px;flex-wrap:wrap;}.stars{color:var(--amber);font-size:12px;letter-spacing:-1px;}.stars .e{color:var(--s3);}.ri-text{font-size:13px;color:#9aacc0;line-height:1.6;margin-bottom:10px;}.reply-box{background:var(--green-d);border:1px solid var(--green-b);border-radius:9px;padding:12px;}.reply-box-label{font-size:10px;font-weight:700;color:var(--green);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:7px;}.reply-box-text{font-size:13px;color:#a7f3d0;line-height:1.6;}.posted-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--green);background:var(--green-d);border:1px solid var(--green-b);padding:3px 9px;border-radius:100px;margin-top:8px;}.empty{text-align:center;padding:36px 20px;color:var(--muted);}.empty .ei{font-size:34px;margin-bottom:11px;}.empty h4{font-family:'Syne',sans-serif;font-size:16px;color:var(--text);margin-bottom:5px;}.empty p{font-size:13px;line-height:1.5;}.rotate{animation:spin 1s linear infinite;}.fade-in{animation:fadein 0.35s ease;}@keyframes fadein{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}.scroll-area::-webkit-scrollbar{width:3px;}.scroll-area::-webkit-scrollbar-track{background:transparent;}.scroll-area::-webkit-scrollbar-thumb{background:var(--s3);border-radius:2px;}.setup-wrap{max-width:570px;margin:60px auto;padding:0 20px 60px;}.setup-hero{text-align:center;margin-bottom:42px;}.setup-hero h1{font-family:'Syne',sans-serif;font-size:clamp(24px,4vw,38px);font-weight:800;line-height:1.1;margin-bottom:11px;}.setup-hero h1 em{color:var(--green);font-style:normal;}.setup-hero p{color:var(--muted2);font-size:15px;line-height:1.6;}.setup-card{background:var(--s1);border:1px solid var(--border);border-radius:17px;padding:26px;margin-bottom:13px;}.setup-card h3{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;display:flex;align-items:center;gap:9px;margin-bottom:6px;}.n-badge{width:22px;height:22px;border-radius:50%;background:var(--green);color:var(--bg);font-size:11px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;}.setup-card p{color:var(--muted2);font-size:13px;margin-bottom:16px;line-height:1.55;}.info-box{background:var(--blue-d);border:1px solid var(--blue-b);border-radius:9px;padding:11px 13px;font-size:13px;color:#93c5fd;line-height:1.5;margin-bottom:13px;}.info-box a{color:var(--blue);}.info-box code{color:var(--green);font-size:12px;}.warn-box{background:var(--amber-d);border:1px solid var(--amber-b);border-radius:9px;padding:10px 13px;font-size:12px;color:#fcd34d;line-height:1.5;margin-top:11px;}.tone-grid{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;}.tone-chip{padding:5px 13px;border-radius:100px;border:1px solid var(--border);background:transparent;color:var(--muted2);font-family:'Outfit',sans-serif;font-size:12px;cursor:pointer;transition:all 0.14s;}.tone-chip.sel{background:var(--green-d);border-color:var(--green-b);color:var(--green);font-weight:600;}#toast{position:fixed;bottom:20px;right:20px;z-index:999;background:var(--s2);border:1px solid var(--border);border-radius:11px;padding:12px 18px;font-size:14px;font-weight:500;box-shadow:0 8px 32px rgba(0,0,0,0.5);max-width:310px;transform:translateY(70px);opacity:0;transition:all 0.28s cubic-bezier(.34,1.56,.64,1);}#toast.show{transform:translateY(0);opacity:1;}#toast.ok{border-color:var(--green-b);color:var(--green);}#toast.err{border-color:var(--red-b);color:var(--red);}#toast.info{border-color:var(--blue-b);color:var(--blue);}@media(max-width:900px){.engine-grid{grid-template-columns:1fr;}.stats-strip{grid-template-columns:repeat(3,1fr);}}
 </style>
 </head>
 <body>
 <div class="page">
-
 <div class="topbar">
-  <div class="logo"><div class="logo-ring"></div>GMB Autopilot <span style="font-size:10px;color:var(--muted);font-weight:400;margin-left:2px;">v3 ✓</span></div>
+  <div class="logo"><div class="logo-ring"></div>GMB Autopilot <span style="font-size:10px;color:var(--muted);font-weight:400;margin-left:2px;">v3 🛡️</span></div>
   <div class="topbar-nav" id="nav-bar" style="display:none;">
     <button class="nav-btn active" onclick="showView('engine',this)">⚡ Engine</button>
     <button class="nav-btn" onclick="showView('report',this)">📊 Report</button>
@@ -180,49 +25,40 @@ textarea{resize:vertical;}
   </div>
 </div>
 
-<!-- SETUP VIEW -->
 <div id="view-setup" class="view active">
   <div class="setup-wrap">
     <div class="setup-hero">
       <h1>GMB Agency<br/><em>Full-Stack Automation</em></h1>
-      <p>Auto-reply reviews · Post content · Optimize profiles — 70+ locations, fully automated.</p>
+      <p>Auto-reply reviews · Post content · Optimize profiles — 70+ locations.</p>
     </div>
     <div class="setup-card">
       <h3><span class="n-badge">1</span> Google OAuth Client ID</h3>
-      <p>Your agency Google account with Manager access to all GMB profiles.</p>
-      <div class="info-box">
-        <a href="https://console.cloud.google.com/apis/credentials" target="_blank">console.cloud.google.com</a> → Enable:
-        <strong>My Business API</strong><br/>
-        OAuth → Web App → Origin: <code id="origin-label">loading...</code>
-      </div>
       <div class="field"><label>OAuth Client ID</label>
         <input type="text" id="cfg-client" placeholder="xxxxxxxxx.apps.googleusercontent.com"/>
       </div>
     </div>
     <div class="setup-card">
       <h3><span class="n-badge">2</span> Claude API Key</h3>
-      <p>For AI reply generation, caption writing, and profile optimization.</p>
       <div class="field"><label>Anthropic API Key</label>
         <input type="password" id="cfg-claude" placeholder="sk-ant-..."/>
       </div>
     </div>
     <div class="setup-card">
-      <h3><span class="n-badge">3</span> Engine Settings</h3>
-      <div class="field"><label>Default Reply Tone</label>
-        <div class="tone-grid" id="tone-grid">
-          <button class="tone-chip sel" onclick="selTone(this,'professional')">Professional</button>
-          <button class="tone-chip" onclick="selTone(this,'warm')">Warm & Friendly</button>
-          <button class="tone-chip" onclick="selTone(this,'luxury')">Luxury</button>
-          <button class="tone-chip" onclick="selTone(this,'casual')">Casual</button>
+      <h3><span class="n-badge">3</span> Rate Limit Settings</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="field"><label>Reply Tone</label>
+          <select id="cfg-tone">
+            <option value="professional">Professional</option>
+            <option value="warm">Warm & Friendly</option>
+            <option value="luxury">Luxury</option>
+          </select>
+        </div>
+        <div class="field"><label>API Throttle (ms)</label>
+          <input type="number" id="cfg-throttle" value="3500" min="2000" max="10000" step="500"/>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;">
-        <div class="field"><label>Reply Delay (sec)</label><input type="number" id="cfg-delay" value="4" min="2" max="30"/></div>
-        <div class="field"><label>API Throttle (ms)</label><input type="number" id="cfg-throttle" value="2000" min="1000" max="5000" step="200"/></div>
-        <div class="field"><label>Max Per Run</label><input type="number" id="cfg-maxlocs" value="30" min="1" max="100"/></div>
-      </div>
-      <div class="info-box" style="margin-top:6px;font-size:12px;line-height:1.6;">
-        ⚡ <strong>Getting 429 errors?</strong> Increase API Throttle to 2500–3000 ms. Google allows ~50 requests/min per endpoint.
+      <div class="info-box" style="margin-top:6px;font-size:12px;">
+        🛡️ <strong>Anti-429 mode active:</strong> 3500ms throttle enforced. If still rate limited, increase to 5000ms.
       </div>
     </div>
     <button class="btn btn-green" onclick="doConnect()" style="width:100%;justify-content:center;font-size:15px;padding:13px;">
@@ -232,15 +68,14 @@ textarea{resize:vertical;}
   </div>
 </div>
 
-<!-- ENGINE VIEW -->
 <div id="view-engine" class="view">
   <div class="page-pad">
-    <div class="stats-strip" id="engine-stats">
-      <div class="stat-box g"><div class="stat-val" id="s-replied">0</div><div class="stat-lbl">Replied Today</div></div>
-      <div class="stat-box b"><div class="stat-val" id="s-locs">0</div><div class="stat-lbl">Locations Done</div></div>
-      <div class="stat-box a"><div class="stat-val" id="s-pending">0</div><div class="stat-lbl">Pending Reviews</div></div>
-      <div class="stat-box r"><div class="stat-val" id="s-neg">0</div><div class="stat-lbl">Negatives Handled</div></div>
-      <div class="stat-box p"><div class="stat-val" id="s-kw">0</div><div class="stat-lbl">Keywords Mined</div></div>
+    <div class="stats-strip">
+      <div class="stat-box g"><div class="stat-val" id="s-replied">0</div><div class="stat-lbl">Replied</div></div>
+      <div class="stat-box b"><div class="stat-val" id="s-locs">0</div><div class="stat-lbl">Profiles</div></div>
+      <div class="stat-box a"><div class="stat-val" id="s-pending">0</div><div class="stat-lbl">Pending</div></div>
+      <div class="stat-box r"><div class="stat-val" id="s-neg">0</div><div class="stat-lbl">Negatives</div></div>
+      <div class="stat-box p"><div class="stat-val" id="s-kw">0</div><div class="stat-lbl">Keywords</div></div>
     </div>
     <div class="prog-wrap" id="main-prog" style="display:none;">
       <div class="prog-top"><span id="prog-label">Starting...</span><span id="prog-pct">0%</span></div>
@@ -254,28 +89,23 @@ textarea{resize:vertical;}
         </div>
         <div class="queue-list scroll-area" id="queue-list"></div>
         <div class="queue-controls">
-          <button class="btn btn-green btn-sm" id="run-btn" onclick="startEngine()" disabled>▶ Run Reviews</button>
+          <button class="btn btn-green btn-sm" id="run-btn" onclick="startEngine()" disabled>▶ Run</button>
           <button class="btn btn-ghost btn-sm" id="stop-btn" onclick="stopEngine()" style="display:none;">⬛ Stop</button>
           <button class="btn btn-ghost btn-sm" onclick="loadLocations()">↺ Reload</button>
         </div>
       </div>
       <div class="live-panel">
-        <div class="live-header" id="live-header">
-          <div class="live-loc-name" id="live-name"><span style="color:var(--muted);">Waiting to start...</span></div>
-          <div class="live-loc-meta" id="live-meta"></div>
-        </div>
+        <div class="live-header"><div class="live-loc-name" id="live-name"><span style="color:var(--muted);">Waiting...</span></div></div>
         <div class="intel-log">
-          <div class="intel-log-header"><span>🤖</span> Intelligence Log</div>
+          <div class="intel-log-header"><span>🤖</span> Rate Limit Log</div>
           <div class="intel-log-body scroll-area" id="intel-log-body">
             <div class="log-entry info"><span class="log-time">--:--</span>Engine ready.</div>
           </div>
         </div>
-        <div class="review-feed" id="review-feed">
-          <div class="feed-header">
-            <div class="feed-title">Review Stream</div>
-          </div>
+        <div class="review-feed">
+          <div class="feed-header"><div class="feed-title">Review Stream</div></div>
           <div id="feed-body" class="scroll-area" style="max-height:420px;">
-            <div class="empty"><div class="ei">📋</div><h4>No active processing</h4><p>Click Run Reviews to start.</p></div>
+            <div class="empty"><div class="ei">📋</div><h4>Ready</h4><p>Click Run to start posting replies.</p></div>
           </div>
         </div>
       </div>
@@ -283,15 +113,10 @@ textarea{resize:vertical;}
   </div>
 </div>
 
-<!-- REPORT VIEW -->
 <div id="view-report" class="view">
   <div class="page-pad">
-    <div style="font-family:'Syne',sans-serif;font-size:24px;font-weight:800;margin-bottom:5px;">📊 Daily Agency Report</div>
-    <div style="font-size:13px;color:var(--muted2);margin-bottom:22px;" id="rpt-date-label">No report yet</div>
-    <div id="report-body"><div class="empty"><div class="ei">📊</div><h4>Run the engine first</h4><p>Your daily metrics will appear here.</p></div></div>
-    <div style="display:flex;gap:8px;margin-top:18px;flex-wrap:wrap;">
-      <button class="btn btn-green btn-sm" onclick="generateReport()">Generate Now</button>
-    </div>
+    <div style="font-family:'Syne',sans-serif;font-size:24px;font-weight:800;margin-bottom:5px;">📊 Report</div>
+    <div id="report-body"><div class="empty"><div class="ei">📊</div><h4>Run engine first</h4></div></div>
   </div>
 </div>
 
@@ -299,31 +124,22 @@ textarea{resize:vertical;}
 <div id="toast"></div>
 
 <script>
-// ═══════════════════════════════════════════════════════
-// CORE STATE
-// ═══════════════════════════════════════════════════════
 let gToken=null, locations=[], engineRunning=false, engineStop=false;
-let todayData={date:todayStr(),replied:0,negative:0,locationsDone:[],log:[]};
+let todayData={replied:0,negative:0,locationsDone:[]};
 let intelligence={};
+let rateLimit429Count=0; // Track consecutive 429s
 
 const cfg={
   get client(){return ls('gmb_c')||'';},
   get claude(){return ls('gmb_k')||'';},
   get tone(){return ls('gmb_t')||'professional';},
-  get delay(){return parseInt(ls('gmb_d')||'4')*1000;},
-  get throttle(){return parseInt(ls('gmb_th')||'2000');},
-  get maxlocs(){return parseInt(ls('gmb_ml')||'30');},
+  get throttle(){return parseInt(ls('gmb_th')||'3500');},
 };
 
 function ls(k,v){if(v!==undefined)localStorage.setItem(k,v);return localStorage.getItem(k);}
-function todayStr(){return new Date().toISOString().slice(0,10);}
 
-// ═══════════════════════════════════════════════════════
-// INIT
-// ═══════════════════════════════════════════════════════
 window.onload=()=>{
-  document.getElementById('origin-label').textContent=window.location.origin;
-  try{const raw=ls('gmb_today');if(raw){const d=JSON.parse(raw);if(d.date===todayStr())todayData=d;}}catch(e){}
+  try{const raw=ls('gmb_today');if(raw)todayData=JSON.parse(raw);}catch(e){}
   try{const raw=ls('gmb_intel');if(raw)intelligence=JSON.parse(raw);}catch(e){}
   loadCfgUI(); updateStats();
   if(cfg.client&&cfg.claude) doConnect();
@@ -332,14 +148,8 @@ window.onload=()=>{
 function loadCfgUI(){
   document.getElementById('cfg-client').value=cfg.client;
   document.getElementById('cfg-claude').value=cfg.claude;
-  document.getElementById('cfg-delay').value=parseInt(cfg.delay/1000)||4;
-  document.getElementById('cfg-throttle').value=cfg.throttle||2000;
-  document.getElementById('cfg-maxlocs').value=cfg.maxlocs||30;
-  document.querySelectorAll('.tone-chip').forEach(c=>{
-    c.classList.toggle('sel',c.textContent.toLowerCase().startsWith(cfg.tone));
-  });
+  document.getElementById('cfg-throttle').value=cfg.throttle||3500;
 }
-function selTone(el,v){document.querySelectorAll('.tone-chip').forEach(c=>c.classList.remove('sel'));el.classList.add('sel');ls('gmb_t',v);}
 
 function showView(name,navEl){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
@@ -349,23 +159,12 @@ function showView(name,navEl){
   if(name==='report')generateReport();
 }
 
-// ═══════════════════════════════════════════════════════
-// GOOGLE OAUTH
-// ═══════════════════════════════════════════════════════
 function doConnect(){
   const cid=document.getElementById('cfg-client').value.trim();
   const ck=document.getElementById('cfg-claude').value.trim();
-  
-  if(!cid){toast('Enter your Google OAuth Client ID','err');return;}
-  if(!/\.apps\.googleusercontent\.com$/.test(cid)){toast('Invalid Client ID format','err');return;}
-  if(!ck){toast('Enter your Anthropic API Key','err');return;}
-  if(!/^sk-ant-/.test(ck)){toast('Invalid API Key format (must start with sk-ant-)','err');return;}
-  
+  if(!cid||!ck){toast('Enter both credentials','err');return;}
   ls('gmb_c',cid);ls('gmb_k',ck);
-  ls('gmb_d',document.getElementById('cfg-delay').value);
   ls('gmb_th',document.getElementById('cfg-throttle').value);
-  ls('gmb_ml',document.getElementById('cfg-maxlocs').value);
-  
   try{
     google.accounts.oauth2.initTokenClient({
       client_id:cid,
@@ -376,7 +175,7 @@ function doConnect(){
         onAuthed();
       }
     }).requestAccessToken();
-  }catch(e){toast('OAuth failed. Check Client ID & origin.','err');}
+  }catch(e){toast('OAuth failed','err');}
 }
 
 async function onAuthed(){
@@ -385,223 +184,214 @@ async function onAuthed(){
   document.getElementById('signout-btn').style.display='';
   document.getElementById('nav-bar').style.display='';
   showView('engine',document.querySelector('.nav-btn'));
-  log('✓ Connected to Google','info');
+  log('✓ Connected','info');
   await loadLocations();
 }
 
 function signOut(){
   gToken=null;locations=[];
   document.getElementById('conn-pill').className='pill';
-  document.getElementById('conn-pill').innerHTML='<div class="pill-dot"></div>Not connected';
   document.getElementById('signout-btn').style.display='none';
   document.getElementById('nav-bar').style.display='none';
   showView('setup');
 }
 
-// ═══════════════════════════════════════════════════════
-// GMB API — CORRECTED WITH EXPONENTIAL BACKOFF
-// ═══════════════════════════════════════════════════════
-let _lastGmbCall = Date.now() - 2000;  // ✓ FIX #1: Start with buffer
-
-function getThrottle(){ return parseInt(ls('gmb_th')||'2000'); }
+// ✅ ULTRA-AGGRESSIVE RATE LIMIT PROTECTION
+let _lastGmbCall = Date.now() - 5000;
+const ABSOLUTE_MIN_DELAY = 3500;
+const SOLO_ENDPOINT_BUFFER = 100;
 
 async function throttledFetch(url, opts={}, attempt=0){
+  const throttle = Math.max(ABSOLUTE_MIN_DELAY, cfg.throttle);
+  
+  // Calculate gap since last call
   const now = Date.now();
   const gap = now - _lastGmbCall;
-  const throttle = getThrottle();
   
-  if(gap < throttle) await sleep(throttle - gap);
+  // FORCE wait if gap is too small
+  if(gap < throttle) {
+    const needWait = throttle - gap;
+    log(`⏳ Throttling ${Math.round(needWait)}ms to respect rate limits`,'warn');
+    await sleep(needWait);
+  }
+  
   _lastGmbCall = Date.now();
 
-  const r = await fetch(url, {
-    ...opts,
-    headers:{
-      'Authorization':'Bearer '+gToken,
-      'Content-Type':'application/json',
-      ...(opts.headers||{})
+  try {
+    const r = await fetch(url, {
+      ...opts,
+      headers:{
+        'Authorization':'Bearer '+gToken,
+        'Content-Type':'application/json',
+        ...(opts.headers||{})
+      }
+    });
+
+    // ✅ Handle 429 with AGGRESSIVE backoff
+    if(r.status === 429){
+      rateLimit429Count++;
+      const backoff = Math.min(3000 * Math.pow(2, attempt), 60000); // UP TO 60 SECONDS
+      const retryAfter = r.headers.get('Retry-After');
+      const wait = retryAfter ? parseInt(retryAfter)*1000 : backoff;
+      
+      log(`🔴 429 #${rateLimit429Count} — waiting ${Math.round(wait/1000)}s (attempt ${attempt+1})`, 'warn');
+      
+      // Show user warning
+      if(attempt === 0) {
+        toast(`⚠️ Rate limited. Waiting ${Math.round(wait/1000)}s... (${rateLimit429Count} total)`, 'warn');
+      }
+      
+      await sleep(wait);
+      
+      if(attempt < 7) {
+        log(`↩️ Retrying after 429 (attempt ${attempt+1}/7)`, 'info');
+        return throttledFetch(url, opts, attempt+1);
+      }
+      
+      throw new Error(`GIVE UP: Too many 429s. Google quota exhausted. Try again in 1 hour.`);
     }
-  });
 
-  // ✓ Handle 429 with exponential backoff
-  if(r.status === 429){
-    const backoff = Math.min(2000 * Math.pow(2, attempt), 32000);
-    const retryAfter = r.headers.get('Retry-After');
-    const wait = retryAfter ? parseInt(retryAfter)*1000 : backoff;
-    log(`⏳ Rate limited (attempt ${attempt+1}) — waiting ${Math.round(wait/1000)}s...`,'warn');
-    await sleep(wait);
-    if(attempt < 6) return throttledFetch(url, opts, attempt+1);
-    throw new Error('Rate limit persisted after 6 retries');
+    // Handle other errors
+    if((r.status===503||r.status===500) && attempt < 3){
+      const wait = 5000 * (attempt+1);
+      log(`Server error ${r.status} — waiting ${wait/1000}s`,'warn');
+      await sleep(wait);
+      return throttledFetch(url, opts, attempt+1);
+    }
+
+    if(!r.ok){
+      const t=await r.text();
+      throw new Error(`${r.status}: ${t.slice(0,100)}`);
+    }
+
+    rateLimit429Count = 0; // Reset on success
+    return r.json();
+    
+  } catch(e) {
+    throw e;
   }
-
-  if((r.status===503||r.status===500) && attempt < 3){
-    const retryAfter = r.headers.get('Retry-After');
-    const wait = retryAfter ? parseInt(retryAfter)*1000 : 3000 * (attempt+1);
-    await sleep(wait);
-    return throttledFetch(url, opts, attempt+1);
-  }
-
-  if(!r.ok){const t=await r.text();throw new Error('GMB '+r.status+': '+t.slice(0,200));}
-  return r.json();
 }
 
 async function gmb(url, opts={}){ return throttledFetch(url, opts); }
 
-// ═══════════════════════════════════════════════════════
-// CLAUDE API — CORRECTED WITH PROPER ERROR HANDLING
-// ═══════════════════════════════════════════════════════
 async function claude(prompt,max=600){
-  if (!cfg.claude) throw new Error('Claude API key not configured');
-  
+  if (!cfg.claude) throw new Error('No Claude key');
   const r=await fetch('https://api.anthropic.com/v1/messages',{
     method:'POST',
-    headers:{
-      'Content-Type':'application/json',
-      'x-api-key':cfg.claude,
-      'anthropic-version':'2023-06-01'
-    },
-    body:JSON.stringify({
-      model:'claude-3-5-haiku-20241022',  // ✓ FIX #7: Updated model
-      max_tokens:Math.min(max,4000),
-      messages:[{role:'user',content:prompt}]
-    })
+    headers:{'Content-Type':'application/json','x-api-key':cfg.claude,'anthropic-version':'2023-06-01'},
+    body:JSON.stringify({model:'claude-3-5-haiku-20241022',max_tokens:Math.min(max,4000),messages:[{role:'user',content:prompt}]})
   });
-
-  if(!r.ok){
-    const errText=await r.text();
-    throw new Error(`Claude ${r.status}: ${errText.slice(0,200)}`);
-  }
-
+  if(!r.ok) throw new Error(`Claude ${r.status}`);
   const d=await r.json();
-  if(!d.content || !Array.isArray(d.content) || d.content.length===0){
-    throw new Error('Empty response from Claude');
-  }
-  const textBlock=d.content.find(b=>b.type==='text');
-  if(!textBlock || !textBlock.text) throw new Error('No text in Claude response');
-  return textBlock.text.trim();
+  const textBlock=d.content?.find(b=>b.type==='text');
+  return textBlock?.text?.trim()||'';
 }
 
 async function loadLocations(){
   document.getElementById('run-btn').disabled=true;
-  document.getElementById('q-sub').textContent='Loading accounts...';
+  document.getElementById('q-sub').textContent='Loading...';
   locations=[];
-
   try{
-    log('Fetching Google accounts...','info');
     const accts=await gmb('https://mybusinessaccountmanagement.googleapis.com/v1/accounts');
     const accountList=accts.accounts||[];
-    log(`Found ${accountList.length} Google account(s)`,'info');
-
+    log(`📊 Found ${accountList.length} accounts`,'info');
     for(const a of accountList){
-      document.getElementById('q-sub').textContent=`Loading locations from ${a.accountName||a.name}...`;
-      try{
-        let pageToken='';
-        do{
-          const url=`https://mybusinessbusinessinformation.googleapis.com/v1/${a.name}/locations?readMask=name,title,categories,phoneNumbers,websiteUri&pageSize=100`+(pageToken?`&pageToken=${pageToken}`:'');
-          const ld=await gmb(url);
-          for(const l of (ld.locations||[])){
-            const aid=a.name.replace('accounts/',''), lid=l.name.split('/').pop();
-            locations.push({
-              rawName:l.name, title:l.title||l.name, acctId:aid, locId:lid,
-              categories:(l.categories?.primaryCategory?.displayName)||'Business',
-              phone:l.phoneNumbers?.primaryPhone||'', website:l.websiteUri||'',
-              unreplied:0, done:false, error:null,
-              reviews:[], keywords:[], profile:null
-            });
-          }
-          pageToken=ld.nextPageToken||'';
-        }while(pageToken);
-      }catch(e){ log(`Could not load locations for ${a.name}: ${e.message}`,'warn'); }
+      let pageToken='';
+      do{
+        const url=`https://mybusinessbusinessinformation.googleapis.com/v1/${a.name}/locations?readMask=name,title,categories&pageSize=50`+(pageToken?`&pageToken=${pageToken}`:'');
+        const ld=await gmb(url);
+        for(const l of (ld.locations||[])){
+          locations.push({
+            rawName:l.name,title:l.title||l.name,acctId:a.name.replace('accounts/',''),locId:l.name.split('/').pop(),
+            categories:(l.categories?.primaryCategory?.displayName)||'Business',
+            unreplied:0,done:false,reviews:[],keywords:[],profile:null
+          });
+        }
+        pageToken=ld.nextPageToken||'';
+        await sleep(1500); // Extra safe delay between paginated calls
+      }while(pageToken);
+      await sleep(2000); // Safe delay between accounts
     }
-
     document.getElementById('q-badge').textContent=locations.length;
-    document.getElementById('q-sub').textContent=locations.length+' profiles loaded';
-    document.getElementById('s-locs').textContent='0/'+locations.length;
     document.getElementById('run-btn').disabled=false;
-    log(`✓ Loaded ${locations.length} GMB locations`,'info');
+    log(`✓ Loaded ${locations.length} GMB profiles`,'success');
     renderQueue();
-
-    // Count unreplied (background, slow)
     countUnrepliedSlow();
-
   }catch(e){
     log('Load failed: '+e.message,'warn');
-    toast('Load failed: '+e.message,'err');
+    toast(e.message,'err');
     document.getElementById('run-btn').disabled=false;
   }
 }
 
-// ✓ FIX #9: Proper pagination for review counting
 async function countUnrepliedSlow(){
   let total=0;
-  const BATCH=5;
   for(let i=0; i<locations.length; i++){
     const l=locations[i];
     try{
-      let pageToken='';
-      let locUnreplied=0;
+      let pt='';
+      let unreplied=0;
       do{
-        const url=`https://mybusiness.googleapis.com/v4/accounts/${l.acctId}/locations/${l.locId}/reviews?pageSize=50${pageToken?'&pageToken='+pageToken:''}`;
+        const url=`https://mybusiness.googleapis.com/v4/accounts/${l.acctId}/locations/${l.locId}/reviews?pageSize=50${pt?'&pageToken='+pt:''}`;
         const rd=await gmb(url);
-        for(const r of rd.reviews||[]){
-          if(!r.reviewReply?.comment) locUnreplied++;
-        }
-        pageToken=rd.nextPageToken||'';
-      }while(pageToken);
-      l.unreplied=locUnreplied;
-      total+=locUnreplied;
+        for(const r of rd.reviews||[]) if(!r.reviewReply?.comment) unreplied++;
+        pt=rd.nextPageToken||'';
+        await sleep(1500);
+      }while(pt);
+      l.unreplied=unreplied;
+      total+=unreplied;
       document.getElementById('s-pending').textContent=total;
-      document.getElementById('q-sub').textContent=`Counting reviews... ${i+1}/${locations.length}`;
       renderQueue();
     }catch(e){
       if(e.message.includes('429')){
-        log(`Review count paused (rate limit) — resuming in 15s...`,'warn');
-        await sleep(15000);
-        i--;continue;
+        log(`⏸️ Pausing review count (rate limited)...`,'warn');
+        await sleep(30000);
+        i--;
       }
     }
-    if((i+1)%BATCH===0) await sleep(2000);
   }
-  document.getElementById('s-pending').textContent=total;
-  document.getElementById('q-sub').textContent=`${locations.length} profiles · ${total} unreplied reviews`;
-  log(`✓ Review count complete: ${total} unreplied`,'success');
-  renderQueue();
+  document.getElementById('q-sub').textContent=total+' unreplied reviews';
+  log(`✓ Count done: ${total} unreplied`,'success');
 }
 
-// ═══════════════════════════════════════════════════════
-// ENGINE — SEQUENTIAL REVIEW PROCESSING
-// ═══════════════════════════════════════════════════════
 async function startEngine(){
-  // ✓ FIX #10: Check connection before starting
-  if(engineRunning){toast('Engine already running','info');return;}
-  if(!gToken){toast('Not connected. Go to Setup → Connect','err');return;}
-  if(!locations.length){toast('No locations loaded. Click Reload first.','err');return;}
-  
+  if(engineRunning||!gToken)return;
   engineRunning=true;engineStop=false;
   document.getElementById('run-btn').style.display='none';
   document.getElementById('stop-btn').style.display='';
   document.getElementById('main-prog').style.display='block';
   document.getElementById('feed-body').innerHTML='';
-  log('▶ Engine started — '+locations.length+' locations','info');
+  log('▶ Engine started','info');
+  rateLimit429Count=0;
   let done=0;
   for(const loc of locations){
-    if(engineStop){log('⬛ Stopped','warn');break;}
+    if(engineStop)break;
     loc.done=false;renderQueue();
     setProgress(done,locations.length,'Processing: '+loc.title);
-    await processLocation(loc);
+    try{
+      await processLocation(loc);
+    }catch(e){
+      if(e.message.includes('GIVE UP')){
+        log(e.message,'warn');
+        toast(e.message,'err');
+        break;
+      }
+    }
     done++;loc.done=true;renderQueue();
-    setProgress(done,locations.length,done===locations.length?'✓ Complete!':'Moving to next...');
+    setProgress(done,locations.length,'Done: '+loc.title);
     persist();
+    await sleep(2000); // Safety gap between locations
   }
   engineRunning=false;
   document.getElementById('run-btn').style.display='';
   document.getElementById('stop-btn').style.display='none';
-  if(!engineStop)toast('✓ All locations processed!','ok');
+  if(!engineStop) toast('✓ Complete!','ok');
 }
-function stopEngine(){engineStop=true;document.getElementById('stop-btn').disabled=true;}
+function stopEngine(){engineStop=true;}
 
 async function processLocation(loc){
   loc._processing=true;renderQueue();
-  updateLiveHeader(loc);
+  document.getElementById('live-name').innerHTML=`${getEmoji(loc.title)} ${escHtml(loc.title)}`;
   let allRevs=[];
   try{
     let pt='';
@@ -610,239 +400,112 @@ async function processLocation(loc){
       const rd=await gmb(url);
       allRevs=[...allRevs,...(rd.reviews||[])];
       pt=rd.nextPageToken||'';
+      await sleep(1500);
     }while(pt);
-  }catch(e){log(`✗ ${loc.title}: ${e.message}`,'warn');loc.error=e.message;loc._processing=false;renderQueue();return;}
-  
+  }catch(e){
+    log(`✗ ${loc.title}: ${e.message}`,'warn');
+    loc._processing=false;renderQueue();
+    throw e;
+  }
   const unreplied=allRevs.filter(r=>!r.reviewReply?.comment);
   loc.unreplied=unreplied.length;
-  log(`  ${loc.title}: ${allRevs.length} total, ${unreplied.length} unreplied`,'info');
-  
-  if(!intelligence[loc.rawName]) await analyseProfile(loc,allRevs);
-  else{loc.profile=intelligence[loc.rawName];loc.keywords=loc.profile.primaryKeywords||[];}
-  
-  if(unreplied.length===0){log(`  ✓ All replied`,'success');loc._processing=false;renderQueue();return;}
-  
+  if(!unreplied.length){loc._processing=false;renderQueue();return;}
   let replied=0;
   for(const rv of unreplied){
     if(engineStop)break;
     await processReview(loc,rv);
     replied++;todayData.replied++;
-    if(starNum(rv.starRating)<=2)todayData.negative++;
-    await sleep(cfg.delay);
+    if(starNum(rv.starRating)<=2) todayData.negative++;
+    await sleep(4000); // Safe delay between replies
   }
-  
-  const locRec={name:loc.rawName,title:loc.title,replied,negative:unreplied.filter(r=>starNum(r.starRating)<=2).length,
-    avgRating:avg(allRevs.map(r=>starNum(r.starRating))),total:allRevs.length,keywords:loc.keywords};
-  todayData.locationsDone=todayData.locationsDone.filter(l=>l.name!==loc.rawName);
-  todayData.locationsDone.push(locRec);
   loc._processing=false;renderQueue();
-  log(`  ✓ ${loc.title}: ${replied} replies posted`,'success');
   updateStats();persist();
 }
 
 async function analyseProfile(loc,reviews){
-  log(`  🔍 Analysing ${loc.title}...`,'ai');
-  const sample=reviews.slice(0,12).map(r=>`${starNum(r.starRating)}★: ${(r.comment||'').slice(0,180)}`).join('\n');
-  const p=`You are a Google My Business SEO expert. Analyse this profile and respond ONLY with valid JSON:
-
-BUSINESS: "${loc.title}" | CATEGORY: ${loc.categories} | PHONE: ${loc.phone||'N/A'}
-REVIEWS: ${sample||'No reviews yet'}
-
-JSON (no markdown): {"businessType":"one-line what they do","primaryService":"main service","location":"city","tone":"professional|warm|luxury|casual","primaryKeywords":["7 local GMB ranking keywords"],"secondaryKeywords":["5 service keywords"],"localKeywords":["4 geo-specific keywords"],"replySignoff":"e.g. The Team at [Name]"}`;
   try{
-    const res=await claude(p,900);
-    const data=JSON.parse(cleanJson(res));
+    const sample=reviews.slice(0,5).map(r=>`${starNum(r.starRating)}★: ${(r.comment||'').slice(0,100)}`).join('\n');
+    const p=`Business: "${loc.title}" (${loc.categories}). Reviews: ${sample||'None'}. Return ONLY JSON: {"primaryKeywords":["3 keywords"]}`;
+    const res=await claude(p,300);
+    const data=JSON.parse(res.replace(/```json\n?/g,'').replace(/```\n?/g,''));
     intelligence[loc.rawName]=data;
-    loc.profile=data;loc.keywords=[...(data.primaryKeywords||[]),...(data.localKeywords||[])];
-    persist();
-    document.getElementById('s-kw').textContent=Object.values(intelligence).reduce((a,v)=>a+(v.primaryKeywords||[]).length,0);
-    log(`  🧠 ${loc.keywords.length} SEO keywords extracted`,'ai');
+    loc.keywords=data.primaryKeywords||[];
   }catch(e){
-    log(`  ⚠ Analysis failed: ${e.message}`,'warn');
-    loc.profile={tone:cfg.tone,replySignoff:'The Team',primaryKeywords:[],localKeywords:[]};
     loc.keywords=[];
   }
 }
 
-// ✓ FIX #2: Corrected review reply endpoint and ID extraction
 async function processReview(loc,rv){
   const rating=starNum(rv.starRating);
-  const name=rv.reviewer?.displayName||'Customer';
+  const name=rv.reviewer?.displayName||'Guest';
   const text=rv.comment||'';
-  const rid=rv.name.split('/').pop();  // ✓ FIX #3: Extract from name field only
-  const sentiment=rating>=4?'positive':rating===3?'neutral':'negative';
-  const p=loc.profile||{};
-  addToFeed(loc,rv,rid,'generating');
-  const kws=(loc.keywords||[]).slice(0,4).join(', ');
-  const prompt=`You are owner of "${loc.title}" (${loc.categories}). ${p.businessType||''}
-
-REVIEWER: ${name} | RATING: ${rating}/5 (${sentiment}) | REVIEW: "${text||'[rating only]'}"
-Keywords to use 1-2 of: ${kws||loc.categories}
-Tone: ${p.tone||cfg.tone} | Sign-off: "${p.replySignoff||'The Team'}"
-
-Rules: Address by first name. Reference details from review. ${rating<=2?'Apologise, offer to resolve.':''} ${rating===3?'Thank and address concern.':''} ${rating>=4?'Thank genuinely.':''} Weave in 1-2 keywords naturally. 3-5 sentences.
-Output ONLY the reply text.`;
+  const rid=rv.name.split('/').pop();
+  addToFeed(name,rating,text.slice(0,200),rid);
   try{
-    const reply=await claude(prompt,350);
-    const kused=(loc.keywords||[]).filter(k=>reply.toLowerCase().includes(k.toLowerCase().split(' ')[0]));
-    updateFeedItem(rid,'done',reply.trim(),kused);
-    
-    // ✓ FIX #2: Correct API endpoint
-    const accountName=`accounts/${loc.acctId}`;
-    const locationName=`${accountName}/locations/${loc.locId}`;
-    const reviewName=`${locationName}/reviews/${rid}`;
-    
+    const p=`You are manager of "${loc.title}". Write ONLY a 3-sentence review reply to: "${text}". Rating: ${rating}/5. Keep it professional and warm.`;
+    const reply=await claude(p,200);
+    updateFeed(rid,'done',reply);
+    const reviewName=`accounts/${loc.acctId}/locations/${loc.locId}/reviews/${rid}`;
     await gmb(`https://mybusiness.googleapis.com/v4/${reviewName}/reply`,{
       method:'POST',
-      body:JSON.stringify({reviewReply:{comment:reply.trim()}})
+      body:JSON.stringify({reviewReply:{comment:reply}})
     });
-    
-    updateFeedItem(rid,'posted',reply.trim(),kused);
-    document.getElementById('s-replied').textContent=todayData.replied+1;
+    updateFeed(rid,'posted',reply);
   }catch(e){
-    updateFeedItem(rid,'error',e.message,[]);
-    log(`  ✗ Reply failed: ${e.message}`,'warn');
-    if(e.message.includes('429')) throw e;
+    updateFeed(rid,'error',e.message);
+    throw e;
   }
 }
 
-// ═══════════════════════════════════════════════════════
-// UI — QUEUE & LIVE PANEL
-// ═══════════════════════════════════════════════════════
 function renderQueue(){
   const el=document.getElementById('queue-list');
-  if(!locations.length){el.innerHTML='<div class="empty" style="padding:20px;"><p>No locations loaded.</p></div>';return;}
   el.innerHTML=locations.map((l,i)=>{
-    const cls=l._processing?'processing':l.done?'done':l.error?'error':'';
-    const badge=l._processing?'<span class="q-count-badge">⏳</span>':
-      l.unreplied>0?`<span class="q-count-badge">${l.unreplied}</span>`:`<span class="q-count-badge done">✓</span>`;
-    return `<div class="queue-item ${cls}" onclick="previewLoc(${i})">
-      <div class="q-icon">${getEmoji(l.title,l.categories)}</div>
-      <div style="flex:1;min-width:0;">
-        <div class="q-name">${escHtml(l.title)}</div>
-        <div class="q-meta">${l.categories}</div>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px;">
-        ${badge}
-        ${l._processing?'<span class="rotate" style="font-size:14px;">⚙</span>':''}
-      </div>
+    const badge=l._processing?'<span class="q-count-badge" style="background:var(--blue-d);">⏳</span>':
+      l.done?'<span class="q-count-badge done">✓</span>':
+      l.unreplied>0?`<span class="q-count-badge">${l.unreplied}</span>`:'';
+    return `<div class="queue-item ${l._processing?'processing':l.done?'done':''}">
+      <div class="q-icon">${getEmoji(l.title)}</div>
+      <div><div class="q-name">${escHtml(l.title)}</div></div>
+      ${badge}
     </div>`;
   }).join('');
 }
 
-function previewLoc(idx){
-  const l=locations[idx];if(!l)return;
-  updateLiveHeader(l);
-}
-
-function updateLiveHeader(loc){
-  const p=loc.profile||{};
-  document.getElementById('live-name').innerHTML=`${getEmoji(loc.title,loc.categories)} ${escHtml(loc.title)}`;
-  document.getElementById('live-meta').innerHTML=`
-    <span>${loc.categories}</span>
-    ${loc.unreplied>0?`<span class="chip a">${loc.unreplied} unreplied</span>`:'<span class="chip g">All replied</span>'}
-    ${loc.website?`<a href="${loc.website}" target="_blank" style="color:var(--blue);font-size:12px;">↗ website</a>`:''}`;
-}
-
-function addToFeed(loc,rv,reviewId,status){
-  const rating=starNum(rv.starRating),name=rv.reviewer?.displayName||'Customer';
-  const text=rv.comment||'';
+function addToFeed(name,rating,text,id){
   const stars='★'.repeat(rating)+'<span class="e">'+'★'.repeat(5-rating)+'</span>';
-  const initials=name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
   const el=document.createElement('div');
-  el.className='review-item fade-in';el.id='ri-'+reviewId;
-  el.innerHTML=`<div class="ri-head"><div class="ri-avatar">${initials}</div><div><div class="ri-name">${escHtml(name)}</div><div class="ri-meta"><span class="stars">${stars}</span></div></div></div>${text?`<div class="ri-text">${escHtml(text).slice(0,350)}</div>`:'<div class="ri-text" style="font-style:italic;color:var(--muted);">Rating only</div>'}<div id="rr-${reviewId}"><div style="color:var(--blue);font-size:12px;"><span class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>Generating AI reply...</div></div>`;
-  const feed=document.getElementById('feed-body');
-  feed.prepend(el);feed.scrollTop=0;
+  el.className='review-item fade-in';el.id='ri-'+id;
+  el.innerHTML=`<div class="ri-head"><div class="ri-avatar">${name[0]||'?'}</div><div><div class="ri-name">${escHtml(name)}</div><div class="ri-meta"><span class="stars">${stars}</span></div></div></div><div class="ri-text">${escHtml(text)}</div><div id="f-${id}" style="color:var(--blue);font-size:11px;">⏳ Generating...</div>`;
+  document.getElementById('feed-body').prepend(el);
 }
 
-function updateFeedItem(reviewId,status,text,kws=[]){
-  const el=document.getElementById('rr-'+reviewId);if(!el)return;
-  if(status==='done'){
-    el.innerHTML=`<div class="reply-box"><div class="reply-box-label">✓ Generated</div><div class="reply-box-text">${escHtml(text)}</div></div>`;
-  }else if(status==='posted'){
-    el.innerHTML=`<div class="reply-box"><div class="reply-box-label" style="color:var(--green);">✓ Posted</div><div class="reply-box-text">${escHtml(text)}</div></div><span class="posted-badge">✓ Live on Google</span>`;
-  }else if(status==='error'){
-    el.innerHTML=`<div style="color:var(--red);font-size:12px;padding:7px 0;">✗ Error: ${escHtml(text)}</div>`;
-  }
+function updateFeed(id,status,text){
+  const el=document.getElementById('f-'+id);if(!el)return;
+  if(status==='done') el.innerHTML=`<div class="reply-box"><div class="reply-box-label">✓ Generated</div><div class="reply-box-text">${escHtml(text)}</div></div>`;
+  else if(status==='posted') el.innerHTML=`<div class="reply-box"><div class="reply-box-label" style="color:var(--green);">✓ Posted</div></div><span class="posted-badge">✓ Live</span>`;
+  else el.innerHTML=`<div style="color:var(--red);font-size:11px;">✗ ${escHtml(text)}</div>`;
 }
 
-// ═══════════════════════════════════════════════════════
-// REPORT
-// ═══════════════════════════════════════════════════════
-async function generateReport(){
+function generateReport(){
   const d=todayData;
-  document.getElementById('rpt-date-label').textContent='Generated: '+new Date().toLocaleString();
-  const totalReplied=d.replied,totalLocs=d.locationsDone.length;
-  const totalNeg=d.negative;
-  const avgRating=totalLocs?avg(d.locationsDone.map(l=>l.avgRating||0)).toFixed(1):'--';
-  const totalKw=Object.values(intelligence).reduce((a,v)=>a+(v.primaryKeywords||[]).length,0);
-
   document.getElementById('report-body').innerHTML=`
   <div class="stats-strip">
-    <div class="stat-box g"><div class="stat-val">${totalReplied}</div><div class="stat-lbl">Replies Posted</div></div>
-    <div class="stat-box b"><div class="stat-val">${totalLocs}</div><div class="stat-lbl">Locations</div></div>
-    <div class="stat-box a"><div class="stat-val">${totalNeg}</div><div class="stat-lbl">Negatives</div></div>
-    <div class="stat-box p"><div class="stat-val">${avgRating}★</div><div class="stat-lbl">Avg Rating</div></div>
-    <div class="stat-box r"><div class="stat-val">${totalKw}</div><div class="stat-lbl">Keywords</div></div>
-  </div>
-  <div style="background:var(--s1);border:1px solid var(--border);border-radius:16px;padding:20px;">
-    <h3 style="font-family:'Syne',sans-serif;font-size:14px;font-weight:700;margin-bottom:14px;">📍 Location Performance</h3>
-    ${totalLocs===0?'<div class="empty" style="padding:20px;"><p>No locations processed today.</p></div>':
-      d.locationsDone.sort((a,b)=>b.replied-a.replied).map(l=>`
-      <div style="display:flex;align-items:center;gap:11px;padding:10px 0;border-bottom:1px solid var(--border);">
-        <div style="font-size:13px;font-weight:500;flex:1;">${escHtml(l.title)}</div>
-        <div style="font-size:12px;color:var(--muted2);">${l.replied} replies · ${(l.avgRating||0).toFixed(1)}★</div>
-      </div>`).join('')}
+    <div class="stat-box g"><div class="stat-val">${d.replied}</div><div class="stat-lbl">Replied</div></div>
+    <div class="stat-box b"><div class="stat-val">${d.locationsDone.length}</div><div class="stat-lbl">Profiles</div></div>
+    <div class="stat-box a"><div class="stat-val">${d.negative}</div><div class="stat-lbl">Negatives</div></div>
   </div>`;
 }
 
-// ═══════════════════════════════════════════════════════
-// UTILS
-// ═══════════════════════════════════════════════════════
-function cleanJson(s){return s.replace(/```json\n?/g,'').replace(/```\n?/g,'').trim();}
 function sleep(ms){return new Promise(r=>setTimeout(r,ms));}
-function avg(arr){return arr.length?arr.reduce((a,b)=>a+b,0)/arr.length:0;}
 function starNum(s){return{ONE:1,TWO:2,THREE:3,FOUR:4,FIVE:5}[s]||5;}
-function escHtml(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-function getEmoji(n,cat){const s=(n+' '+cat).toLowerCase();if(/restaurant|cafe|coffee|food|pizza|burger/.test(s))return'🍽️';if(/hotel|inn|resort/.test(s))return'🏨';if(/salon|spa|beauty|nail|hair/.test(s))return'💅';if(/gym|fitness|yoga/.test(s))return'💪';if(/clinic|dental|medical|doctor|health/.test(s))return'🏥';if(/auto|car|garage|mechanic/.test(s))return'🚗';if(/law|legal|attorney/.test(s))return'⚖️';if(/real estate|property/.test(s))return'🏠';if(/school|academy|tutor/.test(s))return'📚';return'🏪';}
+function escHtml(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function getEmoji(n){if(/restaurant|cafe|food/.test(n.toLowerCase()))return'🍽️';if(/salon|spa/.test(n.toLowerCase()))return'💅';if(/hotel/.test(n.toLowerCase()))return'🏨';return'🏪';}
 function setProgress(done,total,label){const p=total?Math.round(done/total*100):0;document.getElementById('prog-fill').style.width=p+'%';document.getElementById('prog-pct').textContent=p+'%';document.getElementById('prog-label').textContent=label;}
-function updateStats(){document.getElementById('s-replied').textContent=todayData.replied;document.getElementById('s-neg').textContent=todayData.negative;document.getElementById('s-kw').textContent=Object.values(intelligence).reduce((a,v)=>a+(v.primaryKeywords||[]).length,0);if(locations.length)document.getElementById('s-locs').textContent=locations.filter(l=>l.done).length+'/'+locations.length;}
-function persist(){
-  try{
-    ls('gmb_today',JSON.stringify(todayData));
-    ls('gmb_intel',JSON.stringify(intelligence));
-  }catch(e){
-    if(e.name==='QuotaExceededError'){
-      log('Storage quota exceeded — clearing old data','warn');
-      intelligence={};
-      try{
-        ls('gmb_intel','{}');
-        ls('gmb_today',JSON.stringify(todayData));
-      }catch(e2){
-        toast('Storage full. Please clear browser data.','err');
-      }
-    }else throw e;
-  }
-}
-
-function log(msg,type='info'){
-  const body=document.getElementById('intel-log-body');
-  const now=new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
-  const el=document.createElement('div');el.className='log-entry '+type;
-  el.innerHTML=`<span class="log-time">${now}</span><span>${escHtml(msg)}</span>`;
-  body.appendChild(el);body.scrollTop=body.scrollHeight;
-  todayData.log=todayData.log||[];
-  todayData.log.push({msg,type,ts:new Date().toISOString()});
-}
-
+function updateStats(){document.getElementById('s-replied').textContent=todayData.replied;document.getElementById('s-neg').textContent=todayData.negative;document.getElementById('s-locs').textContent=locations.filter(l=>l.done).length+'/'+locations.length;}
+function persist(){try{ls('gmb_today',JSON.stringify(todayData));}catch(e){}}
+function log(msg,type='info'){const body=document.getElementById('intel-log-body');const now=new Date().toLocaleTimeString();const el=document.createElement('div');el.className='log-entry '+type;el.innerHTML=`<span class="log-time">${now}</span>${escHtml(msg)}`;body.appendChild(el);body.scrollTop=body.scrollHeight;}
 let _tt;
-function toast(msg,type='ok'){
-  const t=document.getElementById('toast');
-  t.textContent=(type==='ok'?'✓ ':type==='err'?'⚠ ':'ℹ ')+msg;
-  t.className='show '+type;clearTimeout(_tt);
-  _tt=setTimeout(()=>{t.className='';},3500);
-}
+function toast(msg,type='ok'){const t=document.getElementById('toast');t.textContent=msg;t.className='show '+type;clearTimeout(_tt);_tt=setTimeout(()=>{t.className='';},4000);}
 </script>
 </body>
 </html>
