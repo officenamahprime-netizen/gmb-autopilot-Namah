@@ -205,6 +205,11 @@
       white-space: nowrap;
     }
 
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
     .btn-ghost {
       background: transparent;
       color: var(--muted);
@@ -222,14 +227,9 @@
       font-weight: 600;
     }
 
-    .btn-green:hover {
+    .btn-green:hover:not(:disabled) {
       background: #2cc98a;
       box-shadow: 0 8px 24px rgba(52, 211, 153, 0.25);
-    }
-
-    .btn-green:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
     }
 
     .btn-blue {
@@ -239,7 +239,7 @@
       font-weight: 600;
     }
 
-    .btn-blue:hover {
+    .btn-blue:hover:not(:disabled) {
       background: #4f96f1;
     }
 
@@ -341,6 +341,7 @@
       color: var(--bg);
       font-weight: 700;
       font-size: 12px;
+      flex-shrink: 0;
     }
 
     .setup-card p {
@@ -429,6 +430,7 @@
       font-size: 12px;
       font-weight: 500;
       transition: all 0.2s;
+      font-family: 'Outfit', sans-serif;
     }
 
     .tone-chip:hover {
@@ -729,11 +731,11 @@
             <div class="field">
               <label>Default Reply Tone</label>
               <div class="tone-grid" id="tone-grid">
-                <button class="tone-chip sel" onclick="selTone(this, 'professional')">Professional</button>
-                <button class="tone-chip" onclick="selTone(this, 'warm')">Warm & Friendly</button>
-                <button class="tone-chip" onclick="selTone(this, 'luxury')">Luxury</button>
-                <button class="tone-chip" onclick="selTone(this, 'casual')">Casual</button>
-                <button class="tone-chip" onclick="selTone(this, 'empathetic')">Empathetic</button>
+                <button class="tone-chip sel" type="button" onclick="selTone(this, 'professional')">Professional</button>
+                <button class="tone-chip" type="button" onclick="selTone(this, 'warm')">Warm & Friendly</button>
+                <button class="tone-chip" type="button" onclick="selTone(this, 'luxury')">Luxury</button>
+                <button class="tone-chip" type="button" onclick="selTone(this, 'casual')">Casual</button>
+                <button class="tone-chip" type="button" onclick="selTone(this, 'empathetic')">Empathetic</button>
               </div>
             </div>
             <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
@@ -755,7 +757,7 @@
             </div>
           </div>
 
-          <button class="btn btn-green" onclick="doConnect()" style="width: 100%; justify-content: center; font-size: 15px; padding: 14px; margin-bottom: 12px;">
+          <button class="btn btn-green" type="button" onclick="doConnect()" style="width: 100%; justify-content: center; font-size: 15px; padding: 14px; margin-bottom: 12px;">
             ✓ Connect Google Account & Start →
           </button>
           <div class="warn-box">⚠️ All credentials stored locally in your browser only.</div>
@@ -789,10 +791,10 @@
           <div class="action-panel">
             <h2>Control Panel</h2>
             <div class="action-buttons">
-              <button class="btn btn-green" id="run-btn" onclick="startEngine()">
+              <button class="btn btn-green" type="button" id="run-btn" onclick="startEngine()">
                 ▶ Run Reviews
               </button>
-              <button class="btn btn-ghost" id="stop-btn" onclick="stopEngine()" style="display: none;">
+              <button class="btn btn-ghost" type="button" id="stop-btn" onclick="stopEngine()" style="display: none;">
                 ⏹ Stop
               </button>
             </div>
@@ -935,7 +937,7 @@
             </div>
             <div class="feature-card">
               <h3>🤖 AI Insights</h3>
-              <p>ChatGPT-powered natural language insights. Understand what's working and what's not.</p>
+              <p>Claude AI-powered natural language insights. Understand what's working and what's not.</p>
             </div>
             <div class="feature-card">
               <h3>📤 Client Ready</h3>
@@ -979,12 +981,12 @@
     // ═════════════════════════════════════════════════════════
     // INIT
     // ═════════════════════════════════════════════════════════
-    window.onload = () => {
+    window.addEventListener('DOMContentLoaded', function() {
       loadCfgUI();
       if (cfg.client && cfg.claude) {
         doConnect();
       }
-    };
+    });
 
     function loadCfgUI() {
       const client = document.getElementById('cfg-client');
@@ -1046,26 +1048,45 @@
       if (th) ls('gmb_th', th.value);
 
       try {
+        if (typeof google === 'undefined' || !google.accounts) {
+          toast('Google Identity Services not loaded. Refresh the page.', 'err');
+          return;
+        }
+        
         google.accounts.oauth2.initTokenClient({
           client_id: cid,
           scope: 'https://www.googleapis.com/auth/business.manage',
-          callback: async (r) => {
-            if (r.error) { toast('OAuth error: ' + r.error, 'err'); return; }
+          callback: (r) => {
+            if (r.error) { 
+              toast('OAuth error: ' + r.error, 'err'); 
+              return; 
+            }
             gToken = r.access_token;
             onAuthed();
           }
         }).requestAccessToken();
       } catch (e) {
-        toast('OAuth failed. Check Client ID & origin.', 'err');
+        toast('OAuth failed. Check Client ID & origin. Error: ' + e.message, 'err');
+        console.error('OAuth error:', e);
       }
     }
 
     async function onAuthed() {
-      document.getElementById('conn-pill').className = 'pill on';
-      document.getElementById('conn-pill').innerHTML = '<div class="pill-dot"></div>Connected';
-      document.getElementById('signout-btn').style.display = '';
-      document.getElementById('nav-bar').style.display = '';
-      showView('engine', document.querySelector('.nav-btn'));
+      const connPill = document.getElementById('conn-pill');
+      if (!connPill) return;
+      
+      connPill.className = 'pill on';
+      connPill.innerHTML = '<div class="pill-dot"></div>Connected';
+      
+      const signoutBtn = document.getElementById('signout-btn');
+      if (signoutBtn) signoutBtn.style.display = '';
+      
+      const navbar = document.getElementById('nav-bar');
+      if (navbar) navbar.style.display = 'flex';
+      
+      const firstNavBtn = document.querySelector('.nav-btn');
+      if (firstNavBtn) showView('engine', firstNavBtn);
+      
       log('✓ Connected to Google', 'success');
       await loadLocations();
     }
@@ -1073,11 +1094,21 @@
     function signOut() {
       gToken = null;
       locations = [];
-      document.getElementById('conn-pill').className = 'pill';
-      document.getElementById('conn-pill').innerHTML = '<div class="pill-dot"></div>Not connected';
-      document.getElementById('signout-btn').style.display = 'none';
-      document.getElementById('nav-bar').style.display = 'none';
+      
+      const connPill = document.getElementById('conn-pill');
+      if (connPill) {
+        connPill.className = 'pill';
+        connPill.innerHTML = '<div class="pill-dot"></div>Not connected';
+      }
+      
+      const signoutBtn = document.getElementById('signout-btn');
+      if (signoutBtn) signoutBtn.style.display = 'none';
+      
+      const navbar = document.getElementById('nav-bar');
+      if (navbar) navbar.style.display = 'none';
+      
       showView('setup', document.querySelectorAll('.nav-btn')[5]);
+      toast('Signed out', 'success');
     }
 
     // ═════════════════════════════════════════════════════════
@@ -1091,31 +1122,35 @@
       if (gap < cfg.throttle) await sleep(cfg.throttle - gap);
       _lastGmbCall = Date.now();
 
-      const r = await fetch(url, {
-        ...opts,
-        headers: {
-          'Authorization': 'Bearer ' + gToken,
-          'Content-Type': 'application/json',
-          ...(opts.headers || {})
+      try {
+        const r = await fetch(url, {
+          ...opts,
+          headers: {
+            'Authorization': 'Bearer ' + gToken,
+            'Content-Type': 'application/json',
+            ...(opts.headers || {})
+          }
+        });
+
+        if (r.status === 429) {
+          const backoff = Math.min(2000 * Math.pow(2, attempt), 32000);
+          log(`⏳ Rate limited — retrying in ${Math.round(backoff/1000)}s...`, 'warn');
+          await sleep(backoff);
+          if (attempt < 6) return throttledFetch(url, opts, attempt + 1);
+          throw new Error('GMB 429: Rate limit persists.');
         }
-      });
 
-      if (r.status === 429) {
-        const backoff = Math.min(2000 * Math.pow(2, attempt), 32000);
-        const wait = backoff;
-        log(`⏳ Rate limited — retrying in ${Math.round(wait/1000)}s...`, 'warn');
-        await sleep(wait);
-        if (attempt < 6) return throttledFetch(url, opts, attempt + 1);
-        throw new Error('GMB 429: Rate limit persists.');
+        if ((r.status === 503 || r.status === 500) && attempt < 3) {
+          await sleep(3000 * (attempt + 1));
+          return throttledFetch(url, opts, attempt + 1);
+        }
+
+        if (!r.ok) throw new Error('GMB ' + r.status);
+        return await r.json();
+      } catch (e) {
+        console.error('Fetch error:', e);
+        throw e;
       }
-
-      if ((r.status === 503 || r.status === 500) && attempt < 3) {
-        await sleep(3000 * (attempt + 1));
-        return throttledFetch(url, opts, attempt + 1);
-      }
-
-      if (!r.ok) throw new Error('GMB ' + r.status);
-      return r.json();
     }
 
     async function gmb(url, opts = {}) {
@@ -1123,6 +1158,11 @@
     }
 
     async function loadLocations() {
+      if (!gToken) {
+        log('Not authenticated', 'err');
+        return;
+      }
+      
       log('Loading accounts...', 'info');
       locations = [];
 
@@ -1151,9 +1191,13 @@
           } while (pageToken);
         }
 
-        document.getElementById('stat-queue').textContent = locations.length;
+        const queueEl = document.getElementById('stat-queue');
+        if (queueEl) queueEl.textContent = locations.length;
+        
         log(`✓ Loaded ${locations.length} GMB locations`, 'success');
-        document.getElementById('run-btn').disabled = false;
+        
+        const runBtn = document.getElementById('run-btn');
+        if (runBtn) runBtn.disabled = false;
       } catch (e) {
         log('Load failed: ' + e.message, 'err');
         toast('Load failed: ' + e.message, 'err');
@@ -1170,8 +1214,11 @@
 
       engineRunning = true;
       engineStop = false;
-      document.getElementById('run-btn').style.display = 'none';
-      document.getElementById('stop-btn').style.display = 'flex';
+      
+      const runBtn = document.getElementById('run-btn');
+      const stopBtn = document.getElementById('stop-btn');
+      if (runBtn) runBtn.style.display = 'none';
+      if (stopBtn) stopBtn.style.display = 'flex';
 
       log('🚀 Engine started', 'success');
       let processed = 0;
@@ -1187,8 +1234,10 @@
           replied++;
           processed++;
 
-          document.getElementById('stat-replied').textContent = replied;
-          document.getElementById('stat-locations').textContent = processed;
+          const repliedEl = document.getElementById('stat-replied');
+          const locEl = document.getElementById('stat-locations');
+          if (repliedEl) repliedEl.textContent = replied;
+          if (locEl) locEl.textContent = processed;
           
           log(`✓ Processed ${loc.title}`, 'success');
         } catch (e) {
@@ -1197,8 +1246,8 @@
       }
 
       engineRunning = false;
-      document.getElementById('run-btn').style.display = 'flex';
-      document.getElementById('stop-btn').style.display = 'none';
+      if (runBtn) runBtn.style.display = 'flex';
+      if (stopBtn) stopBtn.style.display = 'none';
       log('✓ Engine completed', 'success');
     }
 
@@ -1217,13 +1266,24 @@
       
       const entry = document.createElement('div');
       entry.className = 'log-entry ' + type;
-      entry.innerHTML = `<span class="log-time">${now}</span><span>${msg}</span>`;
+      
+      const timeSpan = document.createElement('span');
+      timeSpan.className = 'log-time';
+      timeSpan.textContent = now;
+      
+      const msgSpan = document.createElement('span');
+      msgSpan.textContent = msg;
+      
+      entry.appendChild(timeSpan);
+      entry.appendChild(msgSpan);
       container.appendChild(entry);
       container.scrollTop = container.scrollHeight;
     }
 
     function toast(msg, type = 'info') {
       const el = document.getElementById('toast');
+      if (!el) return;
+      
       el.textContent = msg;
       el.className = type;
       el.style.display = 'block';
